@@ -15,7 +15,7 @@ public class Contoh{
      * Contoh
      * @param contoh objeck Card
      */
-    public void moveCardtoDeck(Card contoh) {
+    public void Contoh(Card contoh) {
 
     }    
 }
