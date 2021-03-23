@@ -1,7 +1,6 @@
 /**
  * Deck.java
  * [Kelas Deck menyimpan list of Card]
- * @author [18219017] [Bonaventura Bagas Sukarno]
  */
 import java.util.*; 
 
