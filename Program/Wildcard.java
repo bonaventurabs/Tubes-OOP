@@ -6,7 +6,8 @@ public class Wildcard extends AbstractCard {
 
     // Constructor
     public Wildcard(CardColor color){
-        super(CardType.Wild, color);    
+        super(CardType.Wild, color);
+        CardUtil.validateColor(color);    
     }
 
     @Override

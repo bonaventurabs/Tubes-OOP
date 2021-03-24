@@ -7,6 +7,7 @@ public class DrawFourCard extends AbstractCard {
     // Constructor
     public DrawFourCard(CardColor color){
         super(CardType.DrawFour, color);
+        CardUtil.validateColor(color);
     }
 
     @Override
