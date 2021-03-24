@@ -1,5 +1,8 @@
 public enum CardType {
     Number,
     Skip,
-    Reverse;
+    Reverse,
+    DrawTwo,
+    DrawFour,
+    Wild;
 }
