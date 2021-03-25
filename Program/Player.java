@@ -32,7 +32,10 @@ public class Player extends Deck {
 
     }
     public void getCard(){  // ini agak bingung gimana sebenarnya dapatin kartu dari list playerCard yg di Deck
-        
+        topCard = super.playerCard.get(0); // kartu pertama
+        playerCardList.add(topCard);
+        super.playerCard.remove(0);
+      
         topCard = super.playerCard.get(0); // kartu kedua
         playerCardList.add(topCard);
         super.playerCard.remove(0);
