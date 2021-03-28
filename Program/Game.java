@@ -7,45 +7,34 @@ import java.util.*;
 
 public class Game {
 
-    private Player[] playerList;
+
     private Card discardPile;
     private int multipleDiscard;
-
-    Scanner scan = new Scanner(System.in);
+    private Player[] playerList;
+    private int playerTurnIdx = 0;
+    private boolean reversed = false;
 
     /**
      * Constructor Game
      * @Param numPlayer
      */
-    public Game (int numPlayer){
-
-        // Set player
-        for (int i=0; i<numPlayer; i++){
-            String nama = scan.nextLine();
-            playerList[i] = new Player(nama);
-        }
-
-        // Set deck
-        Deck deck = new Deck();
-
-        // Random list player
-        Collections.shuffle(playerList);
-
-        // Random kartu awal di discard pile
-        Card tmp = deck.gettopCard();
-        while (!(tmp instanceof NumberCard)){
-            deck.randomCard();
-            tmp = deck.gettopCard();
-        }
-        discardPile = deck.gettopCard();
-
+    public Game (Player[] playerList, Card discardPile){
+        this.playerList = playerList;
+        this.discardPile = discardPile;
     }
 
     /**
-     * Method player pertama
+     * Method set discardPile
      */
-    public void firstTurn(){
+    public void setDiscardPile(Card discardPile){
+        this.discardPile = discardPile;
+    }
 
+    /**
+     * Method ngacak turn awal
+     */
+    public void randomTurn(){
+        Collections.shuffle(playerList);
     }
 
     /**
