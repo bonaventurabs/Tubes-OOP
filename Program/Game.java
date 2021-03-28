@@ -16,7 +16,6 @@ public class Game {
 
     /**
      * Constructor Game
-     * @Param numPlayer
      */
     public Game (Player[] playerList, Card discardPile){
         this.playerList = playerList;
