@@ -1,23 +1,60 @@
 /**
  * Wildcard.java
+ * Kelas Wildcard sebagai jenis kartu Wildcard
  */
 
-public class Wildcard extends AbstractCard {
+public class Wildcard extends Card implements CardMethod {
+    final CardColor warnaKartu = CardColor.Wild;
+    CardColor nextWarna;
 
-    // Constructor
-    public Wildcard(CardColor color){
-        super(CardType.Wild, color);
-        CardUtil.validateColor(color);    
+    /**
+     * Constructor Wildcard
+     */
+    public Wildcard(CardColor warnaKartu){
+        super(warnaKartu);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        // Wildcard dapat dikeluarkan kapanpun
-        return o != null;
+    /**
+     * Getter warnaKartu
+     */
+    public CardColor getColor(){
+        return this.warnaKartu;
     }
 
-    @Override
+    /**
+     * Setter nextWarna
+     * Memilih warna kartu yang dapat dimainkan selanjutnya
+     * @param Warna kartu selanjutnya
+     */
+    public void setNextWarna(CardColor nextWarna){
+        this.nextWarna = nextWarna;
+    }
+
+    /**
+     * toString
+     * Mengubah dalam format String
+     */
     public String toString() {
-        return getType() + " " + getColor();
+        return getClass() + " " + this.nextWarna;
+    }
+
+    /**
+     * isEqual
+     * Mengecek apakah kartu sama persis
+     * Kartu sama persis jika memiliki jenis kartu yang sama
+     * @param Kartu yang sedang dimiliki
+     * @return true jika memiliki jenis kartu yang sama
+     */
+    public boolean isEqual(Card card) {
+        return (card.getClass() == this.getClass());
+    }
+
+    /**
+     * isLegalMove
+     * Wildcard dapat dikeluarkan kapanpun
+     * @param Kartu yang dimainkan sebelumnya
+     */
+    public boolean isLegalMove(Card card) {
+        return true;
     }
 }
