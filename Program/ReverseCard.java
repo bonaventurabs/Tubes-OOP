@@ -1,58 +1,56 @@
-import java.util.Objects;
-/*
- * ReverseCard
+/**
+ * ReverseCard.java
+ * Kelas ReverseCard sebagai jenis kartu Reverse
+ * 
  */
-public class ReverseCard extends AbstractCard{
-    
-    /*
-     * Constuctor
+public class ReverseCard extends Card implements CardMethod {}
+
+    /**
+     * Constructor ReverseCard
      */
-    public ReverseCard(CardColor color) {
-        super(CardType.Reverse, color);
-
-        CardUtil.validateActionType(CardType.Reverse);
-        CardUtil.validateColor(color);
+    public ReverseCard(CardColor warnaKartu) {
+        super(warnaKartu);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        /* 
-         * checking if both the object references are
-         * referring to the same object
-         */
-        if (this == o)
-            return true;
-
-        /* 
-         * it checks if the argument is of the type ReverseCard
-         * by comparing the classes of the passed argument and this object 
-         */
-        if (o == null || getClass() != o.getClass()) return false;
-        
-        /* 
-         * type casting of the argument 
-         */
-        ReverseCard that = (ReverseCard) o;
-        
-        /* 
-         * comparing the state of argument with the state of 'that' Object 
-         */
-        return getType() == that.getType() && getColor() == that.getColor();
+    /**
+     * Getter warnaKartu
+     */
+    public CardColor getColor() {
+        return this.warnaKartu;
     }
 
-    @Override
-    public int hashCode() {
-        /* 
-         * return type and color as a hashcode value 
-         */
-        return Objects.hash(getType(), getColor());
-    }
-
-    @Override
+    /**
+     * toString
+     * Mengubah dalam format String
+     */
     public String toString() {
-        /* 
-         * change hashcode to string 
-         */
-        return getType()+ " " + getColor();
+        return getClass() + " " + getColor();
     }
+
+    /**
+     * isEqual
+     * Mengecek apakah kartu sama persis
+     * Kartu sama persis jika memiliki warna dan jenis kartu yang sama
+     * @param Kartu yang sedang dimiliki
+     * @return true jika memiliki warna dan jenis kartu yang sama
+     */
+    public boolean isEqual(Card card) {
+        // TODO Auto-generated method stub
+        return ((card instanceof ReverseCard) && card.getColor() == this.getColor());
+    }
+
+    /**
+     * isLegalMove
+     * ReverseCard dapat dikeluarkan dengan syarat: 
+     * kartu yang dimainkan sebelumnya adalah kartu ReverseCard 
+     * atau berwarna sama
+     * atau jika kartu yang dimainkan sebelumnya adalah Wildcard dengan warna pilihan yang berwarna sama.
+     * @param Kartu yang dimainkan sebelumnya
+     * @return true jika memenuhi syarat
+     */
+    public boolean isLegalMove(Card card) {
+        // TODO Auto-generated method stub
+        return ((card.getClass() == this.getClass()) || (card.getColor() == this.getColor()) || ((card instanceof Wildcard) && ((Wildcard) card).nextWarna == this.getColor()));
+    }
+    
 }

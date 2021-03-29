@@ -1,66 +1,65 @@
-import java.util.Objects;
-/*
- * NumberCard
+/**
+ * NumberCard.java
+ * Kelas NumberCard sebagai jenis kartu nomor 0-9
+ * 
  */
-public class NumberCard extends AbstractCard {
-    private final int value;
 
-    /*
-     * Constuctor
+public class NumberCard extends Card implements CardMethod{
+    final int nomor;
+
+    /**
+     * Constuctor Number Card
      */
-    public NumberCard(int value, CardColor color) {
-        super(CardType.Number, color);
-
-        CardUtil.validateColor(color);
-
-        CardUtil.validateNumber(value);
-        this.value = value;
+    public NumberCard(int nomor, CardColor warnaKartu) {
+        super(warnaKartu);
+        this.nomor = nomor;
     }
 
+    /**
+     * Getter nomor
+     */
     public int getValue(){
-        return value;
+        return this.nomor;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        /* 
-         * checking if both the object references are
-         * referring to the same object
-         */
-        if (this == o) 
-            return true;
-
-        /* 
-         * it checks if the argument is of the type NumberCard
-         * by comparing the classes of the passed argument and this object 
-         */
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        /* 
-         * type casting of the argument 
-         */
-        NumberCard that = (NumberCard) o;
-
-        /* 
-         * comparing the state of argument with the state of 'that' Object 
-         */
-        return value == that.value && getColor() == that.getColor();
+    /**
+     * Constuctor warnaKartu
+     */
+    public CardColor getColor(){
+        return this.warnaKartu;
     }
 
-    @Override
-    public int hashCode() {
-        /* 
-         * return value and color as a hashcode value 
-         */
-        return Objects.hash(value, getColor());
-    }
-
-    @Override
+    /**
+     * toString
+     * Mengubah dalam format String
+     */
     public String toString() {
-        /* 
-         * change hashcode to string 
-         */
-        return value + " " + getColor();
+        return getValue() + " " + getColor();
+    }
+
+    /**
+     * isEqual
+     * Mengecek apakah kartu sama persis
+     * Kartu sama persis jika memiliki warna dan nomor kartu yang sama
+     * @param Kartu yang sedang dimiliki
+     * @return true jika memiliki warna dan nomor kartu yang sama
+     */
+    public boolean isEqual(Card card) {
+        // TODO Auto-generated method stub
+        return (getValue() == this.getValue() && card.getColor() == this.getColor());
+    }
+
+    /**
+     * isLegalMove
+     * NumberCard dapat dikeluarkan dengan syarat: 
+     * kartu yang dimainkan sebelumnya memiliki nomor kartu yang sama 
+     * atau berwarna sama
+     * atau jika kartu yang dimainkan sebelumnya adalah Wildcard dengan warna pilihan yang berwarna sama.
+     * @param Kartu yang dimainkan sebelumnya
+     * @return true jika memenuhi syarat
+     */
+    public boolean isLegalMove(Card card) {
+        // TODO Auto-generated method stub
+        return ((card.getValue() == this.getValue()) || (card.getColor() == this.getColor()) || ((card instanceof Wildcard) && ((Wildcard) card).nextWarna == this.getColor()));
     }
 }
