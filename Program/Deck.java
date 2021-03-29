@@ -5,7 +5,6 @@
 import java.util.*; 
 
 public class Deck {
-    private Card topCard;
     private List<Card> deckCard = new ArrayList<Card>();
     private List<Card> playerCard = new ArrayList<Card>();
 
@@ -13,33 +12,33 @@ public class Deck {
      * Constructor Deck
      */
     public Deck() {
-        this.deckCard.add(new ReverseCard());
-        this.deckCard.add(new ReverseCard());
-        this.deckCard.add(new ReverseCard());
-        this.deckCard.add(new ReverseCard());
-        this.deckCard.add(new WildCard());
-        this.deckCard.add(new WildCard());
-        this.decCard.add(new DrawCard());
-        this.decCard.add(new DrawCard());
-        this.decCard.add(new DrawCard());
-        this.decCard.add(new DrawCard());
-        this.decCard.add(new DrawCard());
-        this.decCard.add(new DrawCard());
-        this.decCard.add(new SkipCard());
-        this.decCard.add(new SkipCard());
-        this.decCard.add(new SkipCard());
-        this.decCard.add(new SkipCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        this.decCard.add(new NumberCard());
-        topCard = deckCard.get(0);
+        List<CardColor> colorList = new ArrayList<>();
+        color.add(CardColor.Merah);
+        color.add(CardColor.Hijau);
+        color.add(CardColor.Kuning);
+        color.add(CardColor.Biru);
+        for (CardColor color : colorList) {
+            this.deckCard.add(new NumberCard(0, color));
+            this.deckCard.add(new NumberCard(1, color));
+            this.deckCard.add(new NumberCard(2, color));
+            this.deckCard.add(new NumberCard(3, color));
+            this.deckCard.add(new NumberCard(4, color));
+            this.deckCard.add(new NumberCard(5, color));
+            this.deckCard.add(new NumberCard(6, color));
+            this.deckCard.add(new NumberCard(7, color));
+            this.deckCard.add(new NumberCard(8, color));
+            this.deckCard.add(new NumberCard(9, color));
+            this.deckCard.add(new SkipCard(color));
+            this.deckCard.add(new SkipCard(color));
+            this.deckCard.add(new ReverseCard(color));
+            this.deckCard.add(new ReverseCard(color));
+            this.decCard.add(new DrawTwoCard(color));
+            this.decCard.add(new DrawTwoCard(color));
+        }
+        for (int i = 0; i < 4; i++) {
+            this.decCard.add(new DrawFourCard(CardColor.Wild));
+            this.decCard.add(new Wildcard(CardColor.Wild));
+        }
     }
 
     /**
@@ -47,16 +46,14 @@ public class Deck {
      */
     public void randomCard() {
         Collections.shuffle(deckCard);
-        topCard = deckCard.get(0);
     }
 
     /**
      * Memindahkan Card teratas pada deckCard ke playerCard
      */
     public void moveCardtoPlayer() {
-        playerCard.add(topCard);
-        deckCard.remove(0);
-        topCard = deckCard(0);
+        playerCard.add(this.gettopCard());
+        deckCard.remove(this.gettopCard());
     }
 
     /**
@@ -66,13 +63,13 @@ public class Deck {
     public void moveCardtoDeck(Card movedCard) {
         deckCard.add(movedCard);
         playerCard.remove(movedCard);
-        topCard = deckCard(0);
     }
 
     /**
      * Getter topCard
+     * yaitu indeks-0 dari Arraylist deckCard
      */
     public Card gettopCard() {
-        return topCard;
+        return deckCard.get(0);
     }
 }
