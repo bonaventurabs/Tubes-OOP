@@ -29,7 +29,7 @@ public class Player extends Deck {
          super.moveCardtoDeck();
     }
     public void DeclareHIJI(){ // Masih ga tau bakal ngapain
-
+      System.out.println("HIJI!"); 
     }
     public void getCard(){  // ini agak bingung gimana sebenarnya dapatin kartu dari list playerCard yg di Deck
         topCard = super.playerCard.get(0); // kartu pertama
