@@ -37,7 +37,7 @@ public class DrawFourCard extends DrawTwoCard {
      * Mengubah dalam format String
      */
     public String toString() {
-        return getClass() + " " + this.nextWarna;
+        return  "Draw Four";
     }
 
     /**

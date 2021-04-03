@@ -27,7 +27,7 @@ public class SkipCard extends Card implements CardMethod {
      * Mengubah dalam format String
      */
     public String toString() {
-        return getClass() + " " + getColor();
+        return "Skip " + getColor();
     }
 
     /**
@@ -53,7 +53,16 @@ public class SkipCard extends Card implements CardMethod {
      */
     public boolean isLegalMove(Card card) {
         // TODO Auto-generated method stub
-        return ((card.getClass() == this.getClass()) || (card.getColor() == this.getColor()) || ((card instanceof Wildcard) && ((Wildcard) card).nextWarna == this.getColor()));
+        if (card instanceof SkipCard) return true;
+        else if (card instanceof Wildcard){
+            return ((card.getColor() == this.getColor()) || ((Wildcard) card).nextWarna == this.getColor());
+        }
+        else if (card instanceof DrawFourCard){
+            return ((card.getColor() == this.getColor()) || ((DrawFourCard) card).nextWarna == this.getColor());
+        }
+        else {
+            return ((card.getColor() == this.getColor()));
+        }
     }
     
 }

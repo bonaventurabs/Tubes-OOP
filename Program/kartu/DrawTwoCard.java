@@ -27,7 +27,7 @@ public class DrawTwoCard extends Card implements CardMethod {
      * Mengubah dalam format String
      */
     public String toString() {
-        return getClass() + " " + getColor();
+        return "Draw Two " + getColor();
     }
 
     /**
@@ -51,6 +51,15 @@ public class DrawTwoCard extends Card implements CardMethod {
      * @return true jika memenuhi syarat
      */
     public boolean isLegalMove(Card card) {
-        return ((card.getClass() == this.getClass()) || (card.getColor() == this.getColor()) || ((card instanceof Wildcard) && ((Wildcard) card).nextWarna == this.getColor()));
+        if (card instanceof DrawTwoCard) return true;
+        else if (card instanceof Wildcard){
+            return ((card.getColor() == this.getColor()) || ((Wildcard) card).nextWarna == this.getColor());
+        }
+        else if (card instanceof DrawFourCard){
+            return ((card.getColor() == this.getColor()) || ((DrawFourCard) card).nextWarna == this.getColor());
+        }
+        else {
+            return ((card.getColor() == this.getColor()));
+        }
     }
 }

@@ -36,7 +36,7 @@ public class Wildcard extends Card implements CardMethod {
      * Mengubah dalam format String
      */
     public String toString() {
-        return getClass() + " " + this.nextWarna;
+        return "Wildcard " + this.nextWarna;
     }
 
     /**

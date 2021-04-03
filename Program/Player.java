@@ -18,12 +18,19 @@ public class Player {
         jumlahPlayer ++;
 
         playerCardList.add(Deck.getTopCard()); // kartu pertama
+        Deck.moveCardtoPlayer();
         playerCardList.add(Deck.getTopCard()); // kartu kedua
-        playerCardList.add(Deck.getTopCard()); // kartu ketiha
+        Deck.moveCardtoPlayer();
+        playerCardList.add(Deck.getTopCard()); // kartu ketiga
+        Deck.moveCardtoPlayer();
         playerCardList.add(Deck.getTopCard()); // kartu keempat
+        Deck.moveCardtoPlayer();
         playerCardList.add(Deck.getTopCard()); // kartu kelima
+        Deck.moveCardtoPlayer();
         playerCardList.add(Deck.getTopCard()); // kartu keenam
+        Deck.moveCardtoPlayer();
         playerCardList.add(Deck.getTopCard()); // kartu ketujuh
+        Deck.moveCardtoPlayer();
 
     }
 

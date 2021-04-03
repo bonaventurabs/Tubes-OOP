@@ -62,7 +62,17 @@ public class NumberCard extends Card implements CardMethod{
      */
     public boolean isLegalMove(Card card) {
         // TODO Auto-generated method stub
-        return ((((NumberCard)card).getValue() == this.getValue()) || (card.getColor() == this.getColor())
-                || ((card instanceof Wildcard) && ((Wildcard) card).nextWarna == this.getColor()));
+        if (card instanceof NumberCard){
+            return ((((NumberCard)card).getValue() == this.getValue()) || (card.getColor() == this.getColor()));
+        }
+        else if (card instanceof Wildcard){
+            return ((card.getColor() == this.getColor()) || ((Wildcard) card).nextWarna == this.getColor());
+        }
+        else if (card instanceof DrawFourCard){
+            return ((card.getColor() == this.getColor()) || ((DrawFourCard) card).nextWarna == this.getColor());
+        }
+        else {
+            return ((card.getColor() == this.getColor()));
+        }
     }
 }

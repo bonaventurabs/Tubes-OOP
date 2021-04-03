@@ -72,8 +72,8 @@ public class Main {
         game.startGame();
 
 
-        boolean noWinner = true, noAbort = true;
-        while(noWinner&&noAbort){
+        boolean noWinner = true;
+        while(noWinner){
             // Output pilihan menu
 
             System.out.println("Pilihan menu:");
@@ -86,6 +86,7 @@ public class Main {
             System.out.println("7. Help");
 
             pilihan = scanMain.nextInt();
+
             switch (pilihan){
                 // List cards
                 case 1:
@@ -105,15 +106,11 @@ public class Main {
                     break;
                 // List player
                 case 5:
-
-                    for (int i=1; i<=playerNum; i++){
-
-                    }
-
+                    game.printPlayerList();
                     break;
                 // View player in turn
                 case 6:
-                
+                    game.printPlayerInTurn();
                     break;
                 // Help
                 case 7:

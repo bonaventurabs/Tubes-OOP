@@ -60,10 +60,6 @@ public class Game {
         return playerList.get(playerTurnIdx);    
     }
 
-    public int getPlayerTurnIndex(){
-        return playerTurnIdx;
-    }
-
     public void printPlayerList(){
         int n = 1;
         for (Player myPlayer : playerList){
@@ -76,8 +72,16 @@ public class Game {
         }
     }
 
-    public boolean getReversed(){
-        return reversed;
+    public void printPlayerInTurn(){
+        System.out.print("Saat ini giliran Player : ");
+        System.out.println(getPlayerInTurn().nama);
+        System.out.print("Selanjutnya giliran Player : ");
+        if (reversed) {
+            System.out.println(playerList.get(playerTurnIdx-1).nama);
+        }
+        else {
+            System.out.println(playerList.get(playerTurnIdx+1).nama);
+        }
     }
 
 }
