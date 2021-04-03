@@ -63,7 +63,7 @@ public class Main {
                     break;
                 // List cards
                 case 2:
-                
+                    
                     break;
                 // Discard
                 case 3:
@@ -81,13 +81,14 @@ public class Main {
                 case 6:
                 
                     break;
-                // View player int turn
+                // View player in turn
                 case 7:
                 
                     break;
                 // Help
                 case 8:
-                
+                    System.out.println("Peraturan Permainan:");
+                    System.out.println("");
                     break;
             }
         }

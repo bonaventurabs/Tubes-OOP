@@ -56,4 +56,9 @@ public class Game {
         }
     }
 
+    public Player getPlayerInTurn(){
+        return playerList.get(playerTurnIdx);    
+    }
+
+    
 }
