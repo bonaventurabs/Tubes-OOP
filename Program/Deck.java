@@ -47,6 +47,11 @@ public class Deck {
             deckCard.add(new DrawFourCard(CardColor.WILD));
             deckCard.add(new Wildcard(CardColor.WILD));
         }
+        while (!(getTopCard() instanceof NumberCard)){
+            randomCard();
+        }
+        discardPile = getTopCard();
+        moveCardtoPlayer();
     }
 
     /**

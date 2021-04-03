@@ -132,6 +132,7 @@ public class Main {
                     System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                     break;
             }
+            scanMain.nextLine();
         }
 
         scanMain.close();

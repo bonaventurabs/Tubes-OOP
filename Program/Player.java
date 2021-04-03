@@ -79,7 +79,7 @@ public class Player {
             clearTmpCardList();
 
             // Cek bisa multiple discard
-            while (discardable()){
+            while (multipleDiscardable(Deck.getDiscardPile())){
                 System.out.println("Kamu bisa multiple discard, pilih 0 untuk tidak multiple discard.");
                 printMultipleDiscardable(Deck.getDiscardPile());
                 pilihan = scanDiscard.nextInt();
@@ -140,6 +140,19 @@ public class Player {
                 n++;
             }
         }
+    }
+
+    private boolean multipleDiscardable(Card card){
+        boolean retVal = false;
+
+        for (Card myCard : playerCardList){
+            if(((CardMethod)myCard).isEqual(card)){
+                retVal = true;
+                break;
+            }
+        }
+
+        return retVal;
     }
 
     private void clearTmpCardList(){
