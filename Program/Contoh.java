@@ -24,6 +24,11 @@ public class Contoh{
         test.add(3);
         test.add(4);
         test.remove(Integer.valueOf(2));
+        test.remove(2);
+        System.out.println(test);
+        System.out.println(test.get(2));
+        test.remove(2);
+        System.out.println(test.get(2));
         System.out.println(test);
     }
 }
