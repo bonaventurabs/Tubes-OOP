@@ -39,11 +39,10 @@ public class Main {
             name = scanMain.nextLine();
             playerList.add(new Player(name));
         }   
+        System.out.println();
 
         // Looping game
-
-        System.out.println();
-        scanMain.nextLine();
+        //scanMain.nextLine();
 
         int pilihan=0;
 
@@ -61,6 +60,7 @@ public class Main {
             System.out.println("7. View Player in Turn");
             System.out.println("8. Help");
 
+            System.out.print("Input pilihan: ");
             pilihan = scanMain.nextInt();
             if (pilihan!=1){
                 System.out.println("Kamu belum start game");
@@ -70,7 +70,7 @@ public class Main {
         System.out.println("Game HIJI dimulai!");
         Game game = new Game(playerList);
         game.startGame();
-
+        System.out.println();
 
         boolean noWinner = true;
         while(noWinner){
@@ -85,6 +85,7 @@ public class Main {
             System.out.println("6. View Player in Turn");
             System.out.println("7. Help");
 
+            System.out.print("Input pilihan: ");
             pilihan = scanMain.nextInt();
 
             switch (pilihan){
@@ -132,9 +133,9 @@ public class Main {
                     System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                     break;
             }
-            scanMain.nextLine();
+            //scanMain.nextLine();
         }
 
-        scanMain.close();
+        //scanMain.close();
     }
 }

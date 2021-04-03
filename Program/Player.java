@@ -46,7 +46,7 @@ public class Player {
             if (pilihan!=0){
                 discard(tmpCardList.get(pilihan-1));
             }
-            scanDraw.close();
+            //scanDraw.close();
         }
     }
 
@@ -91,7 +91,7 @@ public class Player {
                 }
             }
 
-            scanDiscard.close();
+            //scanDiscard.close();
 
         }
         else {
