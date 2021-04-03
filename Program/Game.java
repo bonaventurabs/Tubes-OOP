@@ -4,7 +4,7 @@
  */
 
 import java.util.*;
-import kartu.*;
+//import kartu.*;
 
 public class Game {
 
@@ -15,7 +15,7 @@ public class Game {
     /**
      * Constructor Game
      */
-    public Game (List<Player> playerList, Card discardPile){
+    public Game (List<Player> playerList){
         this.playerList = playerList;
     }
 

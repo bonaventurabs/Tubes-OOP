@@ -65,6 +65,7 @@ public class Player {
             printDiscardable();
             Scanner scanDiscard = new Scanner(System.in);
             int pilihan = scanDiscard.nextInt();
+            Deck.setMultipleDiscard(1);
 
             // Discard
             discard(tmpCardList.get(pilihan-1));
@@ -78,6 +79,7 @@ public class Player {
                 if (pilihan==0) break;
                 else {
                     discard(tmpCardList.get(pilihan-1));
+                    Deck.setMultipleDiscard(Deck.getMultipleDiscard()+1);
                     clearTmpCardList();
                 }
             }
