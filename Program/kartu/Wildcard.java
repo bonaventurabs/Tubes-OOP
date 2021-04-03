@@ -1,23 +1,24 @@
 /**
- * DrawFourCard.java
- * Kelas DrawFourCard sebagai jenis kartu Draw 4 (+4)
+ * Wildcard.java
+ * Kelas Wildcard sebagai jenis kartu Wildcard
  */
 
-public class DrawFourCard extends DrawTwoCard {
-    final CardColor warnaKartu = CardColor.Wild;
+package kartu;
+public class Wildcard extends Card implements CardMethod {
+    final CardColor warnaKartu = CardColor.WILD;
     CardColor nextWarna;
 
     /**
-     * Constructor DrawFourCard
+     * Constructor Wildcard
      */
-    public DrawFourCard(CardColor warnaKartu){
+    public Wildcard(CardColor warnaKartu){
         super(warnaKartu);
     }
 
     /**
      * Getter warnaKartu
      */
-    public CardColor getColor() {
+    public CardColor getColor(){
         return this.warnaKartu;
     }
 
@@ -51,7 +52,7 @@ public class DrawFourCard extends DrawTwoCard {
 
     /**
      * isLegalMove
-     * DrawFourCard dapat dikeluarkan kapanpun
+     * Wildcard dapat dikeluarkan kapanpun
      * @param Kartu yang dimainkan sebelumnya
      */
     public boolean isLegalMove(Card card) {

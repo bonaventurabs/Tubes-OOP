@@ -4,60 +4,56 @@
  * [Kelas Player] Masih banyak bingung 
  */
 
-import java.util.Scanner;
+import java.util.*;
+import kartu.*;
 
-public class Player extends Deck {
+public class Player {
     public String nama;
     static int jumlahPlayer = 0;
-    private List<Card> playerCardList = new ArrayList<Card>();//bingung ngisinya gimana
+    private List<Card> playerCardList = new ArrayList<Card>();
 
-    public Player (String nama){  //Input nama nya kayanya di Main
+    public Player (String nama){
         this.nama = nama;   
         jumlahPlayer ++;
+
+        playerCardList.add(Deck.getTopCard()); // kartu pertama
+        playerCardList.add(Deck.getTopCard()); // kartu kedua
+        playerCardList.add(Deck.getTopCard()); // kartu ketiha
+        playerCardList.add(Deck.getTopCard()); // kartu keempat
+        playerCardList.add(Deck.getTopCard()); // kartu kelima
+        playerCardList.add(Deck.getTopCard()); // kartu keenam
+        playerCardList.add(Deck.getTopCard()); // kartu ketujuh
+
     }
 
-    public void Draw (){
-        super.moveCardtoPlayer(); 
-        topCard = super.playerCard.get(0); // karena playerCard yg di deck itu utk semua player, jadinya draw ambil dari list playerCard yg di deck
-        playerCardList.add(topCard);
-        super.playerCard.remove(0); 
+    public void draw (){
+        playerCardList.add(Deck.getTopCard());
+        Deck.moveCardtoPlayer();
     }
-    public void Discard { //mindahin dari playerCardList ke deck
-         topCard = playerCardList.get(0);
-         super.deckCard.add(0);
-         playerCardList.remove(0);
-         super.moveCardtoDeck();
+    public void discard(Card card) {
+
+        boolean discardable = false;
+        // cek apa ada kartu yg bisa didiscard
+        for (Card myCard : playerCardList){
+            if(((CardMethod)myCard).isLegalMove(Deck.getDiscardPile())) discardable = true;
+        }
+        // Ini print list yg bisa dikeluarin
+        if (discardable){
+            Deck.moveCardtoDeck(Deck.getDiscardPile());
+            Deck.setDiscardPile(card);
+            playerCardList.remove(card);
+        }
+        else {
+            System.out.println("Tidak ada kartu yang bisa kamu discard, silahkan pilih draw");
+            // abis draw bisa ngeluarin
+        }
     }
-    public void DeclareHIJI(){ // Masih ga tau bakal ngapain
-      System.out.println("HIJI!"); 
+    public void declareHIJI(){ // Masih ga tau bakal ngapain
+        System.out.println("HIJI!"); 
     }
-    public void getCard(){  // ini agak bingung gimana sebenarnya dapatin kartu dari list playerCard yg di Deck
-        topCard = super.playerCard.get(0); // kartu pertama
-        playerCardList.add(topCard);
-        super.playerCard.remove(0);
-      
-        topCard = super.playerCard.get(0); // kartu kedua
-        playerCardList.add(topCard);
-        super.playerCard.remove(0);
-
-        topCard = super.playerCard.get(0); // kartu ketiga 
-        playerCardList.add(topCard);
-        super.playerCard.remove(0);
-
-        topCard = super.playerCard.get(0); // kartu keempat 
-        playerCardList.add(topCard);
-        super.playerCard.remove(0);
-
-        topCard = super.playerCard.get(0); // kartu kelima
-        playerCardList.add(topCard);
-        super.playerCard.remove(0);
-
-        topCard = super.playerCard.get(0); // kartu keenam
-        playerCardList.add(topCard);
-        super.playerCard.remove(0); 
-
-        topCard = super.playerCard.get(0); //kartu ketujuh
-        playerCardList.add(topCard);
-        super.playerCard.remove(0);   
+    public void cardList(){
+        for (Card myCard : playerCardList){
+            System.out.println(myCard.toString());
+        }
     }
 }

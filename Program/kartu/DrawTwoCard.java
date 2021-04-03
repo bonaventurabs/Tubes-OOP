@@ -4,6 +4,8 @@
  * 
  */
 
+package kartu;
+
 public class DrawTwoCard extends Card implements CardMethod {
 
     /**

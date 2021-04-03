@@ -4,32 +4,21 @@
  */
 
 import java.util.*;
+import kartu.*;
 
 public class Game {
 
-
-    private Card discardPile;
-    private int multipleDiscard = 0;
     private final List<Player> playerList;
     private int playerTurnIdx;
     private boolean reversed;
-    private final Deck deck;
 
     /**
      * Constructor Game
      */
-    public Game (List<Player> playerList, Card discardPile, Deck deck){
+    public Game (List<Player> playerList, Card discardPile){
         this.playerList = playerList;
-        this.discardPile = discardPile;
-        this.deck = deck;
     }
 
-    /**
-     * Method set discardPile
-     */
-    public void setDiscardPile(Card discardPile){
-        this.discardPile = discardPile;
-    }
 
     /**
      * Method ngacak turn awal
@@ -43,8 +32,6 @@ public class Game {
      */
     public void startGame(){
         randomTurn();
-        setDiscardPile(deck.gettopCard());
-        deck.moveCardtoPlayer();
         playerTurnIdx = 0;
         reversed = false;
     }
@@ -69,17 +56,4 @@ public class Game {
         }
     }
 
-    /**
-     * Getter discard pile
-     */
-    public Card getDiscardPile(){
-        return discardPile;
-    }
-    public int getMultipleDiscard(){
-        return multipleDiscard;
-    }
-
-    public void setMultipleDiscard(int multipleDiscard){
-        this.multipleDiscard = multipleDiscard;
-    }
 }
