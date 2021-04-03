@@ -143,4 +143,8 @@ public class Player {
         System.out.println("HIJI!"); 
     }
 
+    public String getNama(){
+        return nama;
+    }
+
 }

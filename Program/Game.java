@@ -60,5 +60,17 @@ public class Game {
         return playerList.get(playerTurnIdx);    
     }
 
-    
+    public void printPlayerList(){
+        int n = 1;
+        for (Player myPlayer : playerList){
+            System.out.println("Player "+n+ ": "+myPlayer.getNama());
+
+            n++;
+        }
+    }
+
+    public boolean getReversed(){
+        return reversed;
+    }
+
 }
