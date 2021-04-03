@@ -63,7 +63,7 @@ public class Main {
 
             pilihan = scanMain.nextInt();
             if (pilihan!=1){
-                System.out.println("Kamu belum start game")
+                System.out.println("Kamu belum start game");
             }
         }
 
@@ -105,9 +105,11 @@ public class Main {
                     break;
                 // List player
                 case 5:
+
                     for (int i=1; i<=playerNum; i++){
-                        
+
                     }
+
                     break;
                 // View player in turn
                 case 6:

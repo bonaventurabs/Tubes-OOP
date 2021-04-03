@@ -147,4 +147,8 @@ public class Player {
         return nama;
     }
 
+    public int getNumOfCard(){
+        return playerCardList.size();
+    }
+
 }

@@ -60,11 +60,18 @@ public class Game {
         return playerList.get(playerTurnIdx);    
     }
 
+    public int getPlayerTurnIndex(){
+        return playerTurnIdx;
+    }
+
     public void printPlayerList(){
         int n = 1;
         for (Player myPlayer : playerList){
             System.out.println("Player "+n+ ": "+myPlayer.getNama());
-
+            System.out.println("Jumlah Kartu: "+ myPlayer.getNumOfCard());
+            if(myPlayer.equals(getPlayerInTurn())) System.out.println("Sedang giliran");
+            else System.out.println("Tidak sedang giliran");
+            System.out.println();
             n++;
         }
     }
