@@ -13,6 +13,7 @@ public class Player {
     private List<Card> playerCardList = new ArrayList<Card>();
     private List<Card> tmpCardList = new ArrayList<Card>();
     private boolean alreadyDraw = false;
+    private long startHIJI=-9999;
 
     public Player (String nama){
         this.nama = nama;   
@@ -177,8 +178,8 @@ public class Player {
         tmpCardList.clear();
     }
 
-    public void declareHIJI(){ // Masih ga tau bakal ngapain
-        System.out.println("HIJI!"); 
+    public boolean declareHIJI(){ 
+        return (getNumOfCard()==1 && System.currentTimeMillis()-startHIJI<=3000);
     }
 
     public String getNama(){
