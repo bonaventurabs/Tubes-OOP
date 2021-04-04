@@ -11,6 +11,7 @@ public class Game {
     private final List<Player> playerList;
     private int playerTurnIdx;
     private boolean reversed;
+    private boolean harusDeclareHIJI = false;
 
     /**
      * Constructor Game
@@ -123,12 +124,28 @@ public class Game {
             //scanWild.close();
         }
         if (getPlayerInTurn().getAlreadyDraw()){
-            nextTurn();
-            System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
-            getPlayerInTurn().resetAlreadyDraw();
+            if (getPlayerInTurn().getNumOfCard()==1){
+                declareHIJICommand();
+            }
+            else {
+                nextTurn();
+                System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
+                getPlayerInTurn().resetAlreadyDraw();
+            }
         }
     }
 
+    public void declareHIJICommand(){
+        harusDeclareHIJI = true;
+    }
+    
+    public boolean getHarusDeclareHIJI(){
+        return harusDeclareHIJI;
+    }
+
+    public void udahDeclareHIJI(){
+        harusDeclareHIJI = false;
+    }
 
     /**
      * Method turn selanjutnya

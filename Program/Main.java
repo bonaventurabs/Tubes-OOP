@@ -94,6 +94,15 @@ public class Main {
             System.out.print("Input pilihan: ");
             pilihan = scanMain.nextInt();
 
+            if (game.getHarusDeclareHIJI()){
+                // start timer
+            }
+
+            /*
+            if (timer habis){
+                // start timer
+            }*/
+
             switch (pilihan){
                 // List cards
                 case 1:
@@ -109,7 +118,12 @@ public class Main {
                     break;
                 // Declare HIJI
                 case 4:
-                    game.getPlayerInTurn().declareHIJI();
+                    if (game.getHarusDeclareHIJI()){
+
+                    }
+                    else {
+                        // harus draw 2
+                    }
                     break;
                 // List player
                 case 5:
