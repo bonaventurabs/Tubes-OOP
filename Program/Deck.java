@@ -12,6 +12,7 @@ public class Deck {
     private static int multipleDiscard = 0;
     private static List<Card> deckCard = new ArrayList<Card>();
     private static List<Card> playerCard = new ArrayList<Card>();
+    private static int plusCounter = 0;
 
     /**
      * Constructor Deck
@@ -47,6 +48,7 @@ public class Deck {
             deckCard.add(new DrawFourCard(CardColor.WILD));
             deckCard.add(new Wildcard(CardColor.WILD));
         }
+        randomCard();
         while (!(getTopCard() instanceof NumberCard)){
             randomCard();
         }
@@ -100,8 +102,16 @@ public class Deck {
     public static int getMultipleDiscard(){
         return multipleDiscard;
     }
-
     public static void setMultipleDiscard(int n){
         multipleDiscard = n;
+    }
+    public static int getPlusCounter(){
+        return plusCounter;
+    }
+    public static void resetPlusCounter(){
+        plusCounter = 0;
+    }
+    public static void addPlusCounter(int n){
+        plusCounter += n;
     }
 }

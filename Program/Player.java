@@ -8,10 +8,11 @@ import java.util.*;
 import kartu.*;
 
 public class Player {
-    public String nama;
+    private String nama;
     static int jumlahPlayer = 0;
     private List<Card> playerCardList = new ArrayList<Card>();
     private List<Card> tmpCardList = new ArrayList<Card>();
+    private boolean alreadyDraw = false;
 
     public Player (String nama){
         this.nama = nama;   
@@ -39,10 +40,11 @@ public class Player {
         Deck.moveCardtoPlayer();
 
         if (discardable()){
-            Scanner scanDraw = new Scanner(System.in);
-            int pilihan = scanDraw.nextInt();
             System.out.println("Kamu bisa langsung mengeluarkan kartu yang kamu ambil! Pilih 0 jika tidak ingin discard.");
             printDiscardable();
+            Scanner scanDraw = new Scanner(System.in);
+            System.out.println("Pilihan:");
+            int pilihan = scanDraw.nextInt();
             if (pilihan!=0){
                 discard(tmpCardList.get(pilihan-1));
             }
@@ -55,6 +57,18 @@ public class Player {
             playerCardList.add(Deck.getTopCard());
             Deck.moveCardtoPlayer();
         }
+    }
+
+    public void drawFailHIJI(){
+        System.out.println("Kamu gagal declare HIJI, draw kartu otomatis");
+        draw(1);
+    }
+
+    public void drawWajib(){
+        System.out.println("Kamu hanya bisa draw "+Deck.getPlusCounter()+" kartu");
+        System.out.println("Draw otomatis.");
+        draw(Deck.getPlusCounter());
+        Deck.resetPlusCounter();
     }
 
     private void discard(Card card){
@@ -90,9 +104,13 @@ public class Player {
                     clearTmpCardList();
                 }
             }
-
+            alreadyDraw = true;
             //scanDiscard.close();
 
+        }
+        else if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard){
+            drawWajib();
+            alreadyDraw = true;
         }
         else {
             System.out.println("Tidak ada kartu yang bisa kamu discard, silahkan pilih draw");
@@ -169,6 +187,13 @@ public class Player {
 
     public int getNumOfCard(){
         return playerCardList.size();
+    }
+
+    public void resetAlreadyDraw(){
+        alreadyDraw = false;
+    }
+    public boolean getAlreadyDraw(){
+        return alreadyDraw;
     }
 
 }

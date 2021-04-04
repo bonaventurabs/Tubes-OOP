@@ -48,7 +48,8 @@ public class NumberCard extends Card implements CardMethod{
      */
     public boolean isEqual(Card card) {
         // TODO Auto-generated method stub
-        return (getValue() == this.getValue() && card.getColor() == this.getColor());
+        if (card instanceof NumberCard) return (((NumberCard)card).getValue() == this.getValue() && card.getColor() == this.getColor());
+        else return false;
     }
 
     /**

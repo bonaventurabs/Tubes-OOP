@@ -74,6 +74,12 @@ public class Main {
 
         boolean noWinner = true;
         while(noWinner){
+
+            System.out.println();
+            System.out.println();
+            System.out.println("Saat ini giliran: "+game.getPlayerInTurn().getNama());
+            System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
+
             // Output pilihan menu
 
             System.out.println("Pilihan menu:");
@@ -95,11 +101,11 @@ public class Main {
                     break;
                 // Discard
                 case 2:
-                    game.getPlayerInTurn().discardCMD();
+                    game.playerDiscard();
                     break;
                 // Draw
                 case 3:
-                    game.getPlayerInTurn().draw();
+                    game.playerDraw();
                     break;
                 // Declare HIJI
                 case 4:

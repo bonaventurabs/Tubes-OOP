@@ -6,7 +6,7 @@
 package kartu;
 public class Wildcard extends Card implements CardMethod {
     final CardColor warnaKartu = CardColor.WILD;
-    CardColor nextWarna;
+    CardColor nextWarna = CardColor.WILD;
 
     /**
      * Constructor Wildcard
