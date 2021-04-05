@@ -42,12 +42,51 @@ public class Game {
      * Method playerDraw
      */
     public void playerDraw(){
+
+        // Print kartu di discard pile
+        System.out.println();
         System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
-        if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard){
-            getPlayerInTurn().drawWajib();
+
+        // Cek apakah kartu di discard pile kartu draw
+        // Kalau draw berarti player wajib draw sebanyak counter
+        if ((Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard)&&Deck.getIsDrawActive()){
+            
+            System.out.println("Kamu harus draw "+Deck.getPlusCounter()+" kartu");
+            System.out.println("Draw otomatis.");
+            getPlayerInTurn().draw(Deck.getPlusCounter());
+            Deck.resetPlusCounter();
+            Deck.setIsDrawActive(false);
+            // Selesai draw
+
+            // Pindah giliran
+            nextTurn();
+            System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
+
         }
+        // Kalau bukan 
         else {
-            getPlayerInTurn().draw();
+            // Draw 1
+            getPlayerInTurn().draw(1);
+
+            // Cek apa bisa langsung discard
+            if (getPlayerInTurn().discardable()){
+                System.out.println("Kamu bisa langsung mengeluarkan kartu yang kamu ambil! Pilih 0 jika tidak ingin discard.");
+                int n = getPlayerInTurn().printDiscardable()-1;
+                Scanner scanDraw = new Scanner(System.in);
+                System.out.print("Pilihan:");
+                int pilihan = scanDraw.nextInt();
+
+                while (pilihan<0 || pilihan >n){
+                    System.out.print("Masukan pilihan salah. Pilihan:");
+                    pilihan = scanDraw.nextInt();
+                }
+                if (pilihan!=0){
+                    getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
+                }
+                getPlayerInTurn().clearTmpCardList();
+            }
+
+            // Pindah giliran
             nextTurn();
             System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
         }
@@ -57,8 +96,107 @@ public class Game {
      * Method playerDiscard
      */
     public void playerDiscard(){
-        //System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
-        getPlayerInTurn().discardCMD();
+
+        // Print kartu di discard pile
+        System.out.println();
+        System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
+
+        /**
+         * Flow:
+         * 1. Kalo kartu di discard pile itu draw dan ga discardable wajib draw
+         * 2. Kalo bukan cek apakah discardable
+         * 3. Keluarin semua pilihan yang bisa didiscard
+         * 4. Input, tmp, dst jangan lupa clear
+         * 5. Multiple discardable???
+         * 6. Kalo ga discardable ya wajib draw
+         */
+
+        if (Deck.getDiscardPile() instanceof DrawFourCard && Deck.getIsDrawActive()){
+            System.out.println("Kamu harus draw.");
+        }
+        else if(Deck.getDiscardPile() instanceof DrawTwoCard && Deck.getIsDrawActive()){
+
+            if (getPlayerInTurn().haveDrawCard()){
+
+                // Print + minta pilihan discard
+                System.out.println("List Kartu yang bisa didiscard:");
+                int n = getPlayerInTurn().printDiscardable()-1;
+                Scanner scanDiscard = new Scanner(System.in);
+                System.out.print("Pilihan:");
+                int pilihan = scanDiscard.nextInt();
+                Deck.setMultipleDiscard(1);
+
+                // Discard
+                while (pilihan<1 || pilihan >n){
+                    System.out.print("Masukan pilihan salah. Pilihan:");
+                    pilihan = scanDiscard.nextInt();
+                }
+                getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
+                getPlayerInTurn().clearTmpCardList();
+
+                // Multiple discard
+                playerMultipleDiscard();
+
+                // Khusus wildcard/draw 4
+                pilihNextWarna();
+
+                // TODO CEK DECLARE HIJI
+                // TODO CEK DECLARE HIJI
+                // TODO CEK DECLARE HIJI
+
+                // Next turn
+                nextTurn();
+
+            }
+            else {
+                System.out.println("Kamu harus draw.");
+            }
+        }
+        else if (getPlayerInTurn().discardable()&&!(Deck.getIsDrawActive())){
+            // Print + minta pilihan discard
+            System.out.println("List Kartu yang bisa didiscard:");
+            int n = getPlayerInTurn().printDiscardable()-1;
+            Scanner scanDiscard = new Scanner(System.in);
+            System.out.print("Pilihan:");
+            int pilihan = scanDiscard.nextInt();
+
+            // Discard
+            while (pilihan<1 || pilihan >n){
+                System.out.print("Masukan pilihan salah. Pilihan:");
+                pilihan = scanDiscard.nextInt();
+            }
+            getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
+            getPlayerInTurn().clearTmpCardList();
+            Deck.setMultipleDiscard(1);
+
+            // Multiple discard
+            playerMultipleDiscard();
+
+            // Aktifin draw kalau ngediscard kartu draw
+            if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard){
+                Deck.setIsDrawActive(true);
+            }
+
+            // Khusus wildcard/draw 4
+            pilihNextWarna();
+
+            // TODO CEK DECLARE HIJI
+            // TODO CEK DECLARE HIJI
+            // TODO CEK DECLARE HIJI
+
+            // Next turn
+            nextTurn();
+
+        }
+        else {
+            System.out.println("Kamu harus draw.");
+        }
+    }
+
+    /**
+     * Method untuk setelah discard wildcard / draw 4 dimana butuh pilih next warna
+     */
+    private void pilihNextWarna(){
         if (Deck.getDiscardPile() instanceof Wildcard){
             System.out.println("Kamu mengeluarkan wildcard, pilihan warna:");
             System.out.println("1. Merah");
@@ -123,28 +261,28 @@ public class Game {
             }
             //scanWild.close();
         }
-        if (getPlayerInTurn().getAlreadyDraw()){
-            if (getPlayerInTurn().getNumOfCard()==1){
-                declareHIJICommand();
+    }
+
+    /**
+     * Method untuk multiple discard
+     */
+    private void playerMultipleDiscard(){
+        while (getPlayerInTurn().multipleDiscardable(Deck.getDiscardPile())){
+            System.out.println("Kamu bisa multiple discard, pilih 0 untuk tidak multiple discard.");
+            int n = getPlayerInTurn().printMultipleDiscardable(Deck.getDiscardPile())-1;
+            Scanner scanMDiscard = new Scanner(System.in);
+            int pilihan = scanMDiscard.nextInt();
+            while (pilihan<0 || pilihan >n){
+                System.out.print("Masukan pilihan salah. Pilihan:");
+                pilihan = scanMDiscard.nextInt();
             }
+            if (pilihan==0) break;
             else {
-                nextTurn();
-                System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
-                getPlayerInTurn().resetAlreadyDraw();
+                getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
+                getPlayerInTurn().clearTmpCardList();
+                Deck.setMultipleDiscard(Deck.getMultipleDiscard()+1);
             }
         }
-    }
-
-    public void declareHIJICommand(){
-        harusDeclareHIJI = true;
-    }
-    
-    public boolean getHarusDeclareHIJI(){
-        return harusDeclareHIJI;
-    }
-
-    public void udahDeclareHIJI(){
-        harusDeclareHIJI = false;
     }
 
     /**
@@ -170,9 +308,6 @@ public class Game {
         else if (Deck.getDiscardPile() instanceof DrawFourCard){
             Deck.addPlusCounter(4);
             nextIdxNumberCard(1);
-            //getPlayerInTurn().draw(Deck.getPlusCounter());
-            //Deck.resetPlusCounter();
-            //nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof Wildcard){
             nextIdxNumberCard(1);
@@ -180,6 +315,9 @@ public class Game {
         
     }
 
+    /**
+     * Next index, looping kalau skip
+     */
     private void nextIdxNumberCard(int n){
         for (int i=0; i<n; i++){
             if (reversed) {
@@ -199,6 +337,9 @@ public class Game {
         }
     }
     
+    /**
+     * Powernya reverse card
+     */
     private void reverseIdx(int n){
         for (int i=0; i<n; i++){
             if (reversed) reversed = false;
@@ -206,10 +347,16 @@ public class Game {
         }
     }
 
+    /**
+     * Getter player yang saat ini gilirannya
+     */
     public Player getPlayerInTurn(){
         return playerList.get(playerTurnIdx);    
     }
 
+    /**
+     * Printer list player
+     */
     public void printPlayerList(){
         int n = 1;
         for (Player myPlayer : playerList){
@@ -222,6 +369,9 @@ public class Game {
         }
     }
 
+    /**
+     * Printer player saat ini dan setelah ini
+     */
     public void printPlayerInTurn(){
         System.out.print("Saat ini giliran Player : ");
         System.out.println(getPlayerInTurn().getNama());
@@ -242,6 +392,23 @@ public class Game {
                 System.out.println(playerList.get(playerTurnIdx+1).getNama());
             }
         }
+    }
+
+
+    /**
+     * Semua fungsi untuk declare HIJI
+     */
+    
+    public void declareHIJICommand(){
+        harusDeclareHIJI = true;
+    }
+    
+    public boolean getHarusDeclareHIJI(){
+        return harusDeclareHIJI;
+    }
+
+    public void udahDeclareHIJI(){
+        harusDeclareHIJI = false;
     }
 
 }

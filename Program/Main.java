@@ -122,7 +122,7 @@ public class Main {
 
                     }
                     else {
-                        // harus draw 2
+                        game.getPlayerInTurn().draw(2);
                     }
                     break;
                 // List player

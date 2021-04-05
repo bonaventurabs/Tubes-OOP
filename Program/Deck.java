@@ -13,6 +13,7 @@ public class Deck {
     private static List<Card> deckCard = new ArrayList<Card>();
     private static List<Card> playerCard = new ArrayList<Card>();
     private static int plusCounter = 0;
+    private static boolean isDrawActive = false;
 
     /**
      * Constructor Deck
@@ -91,7 +92,7 @@ public class Deck {
     }
 
     /**
-     * Getter&Setter DiscarPile
+     * Getter&Setter DiscardPile
      */
     public static void setDiscardPile(Card card){
         discardPile = card;
@@ -113,5 +114,11 @@ public class Deck {
     }
     public static void addPlusCounter(int n){
         plusCounter += n;
+    }
+    public static boolean getIsDrawActive(){
+        return isDrawActive;
+    }
+    public static void setIsDrawActive(boolean b){
+        isDrawActive = b;
     }
 }
