@@ -116,15 +116,15 @@ public class Player {
         return retVal;
     }
 
+    public void declareHIJI() {
+        System.out.println("HIJI!!!");
+    }
+
     public void clearTmpCardList(){
         tmpCardList.clear();
     }
     public Card getTmpCardList(int n){
         return tmpCardList.get(n);
-    }
-
-    public boolean declareHIJI(){ 
-        return (getNumOfCard()==1 && System.currentTimeMillis()-startHIJI<=3000);
     }
 
     public String getNama(){

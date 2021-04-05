@@ -12,6 +12,7 @@ public class Game {
     private int playerTurnIdx;
     private boolean reversed;
     private boolean harusDeclareHIJI = false;
+    private boolean sudahDeclareHIJI = false;
 
     /**
      * Constructor Game
@@ -141,12 +142,12 @@ public class Game {
                 pilihNextWarna();
 
                 // TODO CEK DECLARE HIJI
-                // TODO CEK DECLARE HIJI
-                // TODO CEK DECLARE HIJI
-
-                // Next turn
-                nextTurn();
-
+                if (getPlayerInTurn().getNumOfCard()==1) {
+                    declareHIJICommand();
+                } else {
+                    // Next turn
+                    nextTurn();
+                }
             }
             else {
                 System.out.println("Kamu harus draw.");
@@ -181,12 +182,12 @@ public class Game {
             pilihNextWarna();
 
             // TODO CEK DECLARE HIJI
-            // TODO CEK DECLARE HIJI
-            // TODO CEK DECLARE HIJI
-
-            // Next turn
-            nextTurn();
-
+            if (getPlayerInTurn().getNumOfCard()==1) {
+                declareHIJICommand();
+            } else {
+                // Next turn
+                nextTurn();
+            }
         }
         else {
             System.out.println("Kamu harus draw.");
@@ -290,6 +291,8 @@ public class Game {
      */
     public void nextTurn() {
 
+        // reset declare HIJI
+        resetDeclareHIJI();
         // Cek kartu di discard Pile
         if (Deck.getDiscardPile() instanceof NumberCard){
             nextIdxNumberCard(1);
@@ -398,17 +401,82 @@ public class Game {
     /**
      * Semua fungsi untuk declare HIJI
      */
-    
+    public void playerDeclareHIJI() {
+        getPlayerInTurn().declareHIJI();
+        setSudahDeclareHIJI();
+        if (getPlayerInTurn().getNumOfCard()==1) {
+            System.out.println("Satu kartu lagi menuju kemenangan.");
+            nextTurn();
+            System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
+        } else {
+            System.out.println("Kartu kamu masih banyak!!! Kamu otomatis draw 2 kartu.");
+            getPlayerInTurn().draw(2);
+        }
+    }
+
     public void declareHIJICommand(){
         harusDeclareHIJI = true;
+        sudahDeclareHIJI = false;
     }
     
-    public boolean getHarusDeclareHIJI(){
-        return harusDeclareHIJI;
+    public boolean getDeclareHIJICommand(){
+        return harusDeclareHIJI && !sudahDeclareHIJI;
     }
 
-    public void udahDeclareHIJI(){
+    public void setSudahDeclareHIJI() {
+        sudahDeclareHIJI = false;
+    }
+
+    public boolean getSudahDeclareHIJI() {
+        return sudahDeclareHIJI;
+    }
+
+    public void resetDeclareHIJI() {
         harusDeclareHIJI = false;
+        sudahDeclareHIJI = false;
     }
 
+    public class TimeOutHIJI extends TimerTask {
+        private Thread t;
+        private Timer timer;
+    
+        TimeOutHIJI(Thread t, Timer timer){
+            this.t = t;
+            this.timer = timer;
+        }
+     
+        public void run() {
+            if (t != null && t.isAlive()) {
+                t.interrupt();
+                timer.cancel();
+            }
+        }
+    }
+    
+    public class CheckRunningHIJI implements Runnable {
+        @Override
+        public void run() {
+            try {
+                while (!Thread.interrupted()) {
+                    Thread.sleep(1000);
+                    if (getSudahDeclareHIJI()) {
+                        break;
+                    }
+                }
+            } catch (InterruptedException e) {
+                // log error
+                System.out.println("Waktu kamu untuk declare HIJI habis!!! Kamu otomatis draw 2 kartu.");
+                getPlayerInTurn().draw(2);
+                nextTurn();
+                System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
+            }
+        }
+    }
+    public void startTimerHIJI() {
+        Thread t = new Thread(new CheckRunningHIJI());
+        Timer timer = new Timer();
+        System.out.println("Start timer");
+        timer.schedule(new TimeOutHIJI(t, timer), 3*1000);
+        t.start();
+    }
 }

@@ -94,14 +94,9 @@ public class Main {
             System.out.print("Input pilihan: ");
             pilihan = scanMain.nextInt();
 
-            if (game.getHarusDeclareHIJI()){
-                // start timer
+            if (game.getDeclareHIJICommand()){
+                game.startTimerHIJI();
             }
-
-            /*
-            if (timer habis){
-                // start timer
-            }*/
 
             switch (pilihan){
                 // List cards
@@ -118,12 +113,7 @@ public class Main {
                     break;
                 // Declare HIJI
                 case 4:
-                    if (game.getHarusDeclareHIJI()){
-
-                    }
-                    else {
-                        game.getPlayerInTurn().draw(2);
-                    }
+                    game.playerDeclareHIJI();
                     break;
                 // List player
                 case 5:
@@ -149,7 +139,7 @@ public class Main {
                     System.out.println("b) Skip Card: ");
                     System.out.println("c) Draw Two Card: ");
                     System.out.println("d) Draw Four Card: ");
-                    System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan “Declare HIJI” dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                    System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
                     System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                     break;
             }
