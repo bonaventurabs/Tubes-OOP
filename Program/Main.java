@@ -105,7 +105,8 @@ public class Main {
                 System.out.println("Kamu belum start game");
             }
         }
-
+        clearScreen();
+        printLogo();
         System.out.println("Game HIJI dimulai!");
         Game game = new Game(playerList);
         game.startGame();
@@ -113,6 +114,11 @@ public class Main {
 
         boolean noWinner = true;
         while(noWinner){
+            if (game.getNextTurn()) {
+                clearScreen();
+                printLogo();
+                game.resetNextTurn();
+            }
 
             System.out.println();
             System.out.println();

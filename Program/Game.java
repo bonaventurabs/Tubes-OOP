@@ -13,6 +13,7 @@ public class Game {
     private boolean reversed;
     private boolean harusDeclareHIJI = false;
     private boolean sudahDeclareHIJI = false;
+    private boolean nextTurn = false;
 
     /**
      * Constructor Game
@@ -308,6 +309,7 @@ public class Game {
     public void nextTurn() {
 
         // reset declare HIJI
+        setNextTurn();
         resetDeclareHIJI();
         // Cek kartu di discard Pile
         if (Deck.getDiscardPile() instanceof NumberCard){
@@ -339,6 +341,16 @@ public class Game {
             nextIdxNumberCard(1);
         }
         
+    }
+
+    public void setNextTurn() {
+        nextTurn = true;
+    }
+    public boolean getNextTurn() {
+        return nextTurn;
+    }
+    public void resetNextTurn() {
+        nextTurn = false;
     }
 
     /**
