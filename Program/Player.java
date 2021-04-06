@@ -16,22 +16,11 @@ public class Player {
     public Player (String nama){
         this.nama = nama;   
         jumlahPlayer ++;
-
-        playerCardList.add(Deck.getTopCard()); // kartu pertama
-        Deck.moveCardtoPlayer();
-        playerCardList.add(Deck.getTopCard()); // kartu kedua
-        Deck.moveCardtoPlayer();
-        playerCardList.add(Deck.getTopCard()); // kartu ketiga
-        Deck.moveCardtoPlayer();
-        playerCardList.add(Deck.getTopCard()); // kartu keempat
-        Deck.moveCardtoPlayer();
-        playerCardList.add(Deck.getTopCard()); // kartu kelima
-        Deck.moveCardtoPlayer();
-        playerCardList.add(Deck.getTopCard()); // kartu keenam
-        Deck.moveCardtoPlayer();
-        playerCardList.add(Deck.getTopCard()); // kartu ketujuh
-        Deck.moveCardtoPlayer();
-
+        // Jumlah kartu awal 7 (3 khusus untuk testing)
+        for (int i=0; i<7; i++){
+            playerCardList.add(Deck.getTopCard());
+            Deck.moveCardtoPlayer();
+        }
     }
 
     public void draw(int n){

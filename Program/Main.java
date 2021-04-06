@@ -95,7 +95,7 @@ public class Main {
                 System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
                 System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
                 System.out.println("4) Aturan permainan adalah sebagai berikut.");
-                System.out.println("a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut. Ketentuan kartu apa saja yang boleh dikeluarkan ada pada tabel Jenis Kartu.");
+                System.out.println("a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
                 System.out.println("b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
                 System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
                 System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
@@ -192,7 +192,7 @@ public class Main {
                     System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
                     System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
                     System.out.println("4) Aturan permainan adalah sebagai berikut.");
-                    System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut. Ketentuan kartu apa saja yang boleh dikeluarkan ada pada tabel Jenis Kartu.");
+                    System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
                     System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
                     System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
                     System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
