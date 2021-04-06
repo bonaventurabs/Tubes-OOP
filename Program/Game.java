@@ -310,7 +310,6 @@ public class Game {
 
         // reset declare HIJI
         setNextTurn();
-        resetDeclareHIJI();
 
         // Cek ada pemenang ngga
         if (getPlayerInTurn().getNumOfCard()==0){
@@ -507,18 +506,22 @@ public class Game {
         public void run() {
             try {
                 while (!Thread.interrupted()) {
-                    Thread.sleep(100);
+                    Thread.sleep(10);
                     if (getSudahDeclareHIJI()) {
+                        resetDeclareHIJI();
                         break;
                     }
                 }
             } catch (InterruptedException e) {
                 // log error
-                System.out.println("Waktu kamu untuk declare HIJI habis!!! Kamu otomatis draw 2 kartu.");
-                getPlayerInTurn().draw(2);
-                nextTurn();
-                System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
-                System.out.println("Tekan enter untuk proses selanjutnya.");
+                if (!getSudahDeclareHIJI()) {
+                    System.out.println("Waktu kamu untuk declare HIJI habis!!! Kamu otomatis draw 2 kartu.");
+                    getPlayerInTurn().draw(2);
+                    nextTurn();
+                    resetDeclareHIJI();
+                    System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
+                    System.out.println("Tekan enter untuk proses selanjutnya.");
+                }
             }
         }
     }
