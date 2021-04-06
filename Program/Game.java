@@ -68,23 +68,26 @@ public class Game {
         else {
             // Draw 1
             getPlayerInTurn().draw(1);
+            Deck.setIsSkipActive(false);
+            Deck.setIsReverseActive(false);
 
             // Cek apa bisa langsung discard
-            if (getPlayerInTurn().discardable()){
-                System.out.println("Kamu bisa langsung mengeluarkan kartu yang kamu ambil! Pilih 0 jika tidak ingin discard.");
-                int n = getPlayerInTurn().printDiscardable()-1;
+            if (getPlayerInTurn().discardAfterDraw()){
+                System.out.println("Kamu bisa langsung mengeluarkan kartu yang kamu ambil!");
+                System.out.println("1. Tidak discard");
+                System.out.println("2. Langsung discard");
                 Scanner scanDraw = new Scanner(System.in);
                 System.out.print("Pilihan:");
                 int pilihan = scanDraw.nextInt();
 
-                while (pilihan<0 || pilihan >n){
+                while (pilihan!=1 || pilihan !=2){
                     System.out.print("Masukan pilihan salah. Pilihan:");
                     pilihan = scanDraw.nextInt();
                 }
-                if (pilihan!=0){
-                    getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
+                if (pilihan==2){
+                    getPlayerInTurn().discardLastCard();
+                    pilihNextWarna();
                 }
-                getPlayerInTurn().clearTmpCardList();
             }
 
             // Pindah giliran

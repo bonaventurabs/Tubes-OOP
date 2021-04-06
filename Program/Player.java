@@ -37,6 +37,7 @@ public class Player {
     public void draw(int n){
         for (int i=0; i<n; i++){
             playerCardList.add(Deck.getTopCard());
+            System.out.println("Kartu yang didraw: "+((CardMethod)Deck.getTopCard()).toString());
             Deck.moveCardtoPlayer();
         }
     }
@@ -44,6 +45,7 @@ public class Player {
     public void discard(Card card){
         Deck.moveCardtoDeck(Deck.getDiscardPile());
         Deck.setDiscardPile(card);
+        System.out.println("Kartu yang didiscard: "+((CardMethod)card).toString());
         playerCardList.remove(card);
     }
 
@@ -125,6 +127,14 @@ public class Player {
             }
         }
         return n;
+    }
+
+    public boolean discardAfterDraw(){
+        return ((CardMethod)(playerCardList.get(playerCardList.size()-1))).isLegalMove(Deck.getDiscardPile());
+    }
+
+    public void discardLastCard(){
+        discard(playerCardList.get(playerCardList.size()-1));
     }
 
     public void declareHIJI() {
