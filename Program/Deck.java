@@ -14,6 +14,8 @@ public class Deck {
     private static List<Card> playerCard = new ArrayList<Card>();
     private static int plusCounter = 0;
     private static boolean isDrawActive = false;
+    private static boolean isSkipActive = false;
+    private static boolean isReverseActive = false;
 
     /**
      * Constructor Deck
@@ -120,5 +122,17 @@ public class Deck {
     }
     public static void setIsDrawActive(boolean b){
         isDrawActive = b;
+    }
+    public static boolean getIsSkipActive(){
+        return isSkipActive;
+    }
+    public static void setIsSkipActive(boolean b){
+        isSkipActive = b;
+    }
+    public static boolean getIsReverseActive(){
+        return isReverseActive;
+    }
+    public static void setIsReverseActive(boolean b){
+        isReverseActive = b;
     }
 }

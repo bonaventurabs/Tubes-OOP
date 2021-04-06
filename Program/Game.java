@@ -178,6 +178,8 @@ public class Game {
             if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard){
                 Deck.setIsDrawActive(true);
             }
+            else if (Deck.getDiscardPile() instanceof ReverseCard) Deck.setIsReverseActive(true);
+            else if (Deck.getDiscardPile() instanceof SkipCard) Deck.setIsSkipActive(true);
 
             // Khusus wildcard/draw 4
             pilihNextWarna();
@@ -309,10 +311,17 @@ public class Game {
             nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof SkipCard){
-            nextIdxNumberCard(Deck.getMultipleDiscard()+1);
+            if (Deck.getIsSkipActive()){
+                nextIdxNumberCard(Deck.getMultipleDiscard()+1);
+                Deck.setIsReverseActive(false);
+            }
+            else nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof ReverseCard){
-            reverseIdx(Deck.getMultipleDiscard());
+            if (Deck.getIsReverseActive()){
+                reverseIdx(Deck.getMultipleDiscard());
+                Deck.setIsReverseActive(false);
+            }
             nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof DrawFourCard){
