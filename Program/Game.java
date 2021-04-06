@@ -121,7 +121,7 @@ public class Game {
 
                 // Print + minta pilihan discard
                 System.out.println("List Kartu yang bisa didiscard:");
-                int n = getPlayerInTurn().printDiscardable()-1;
+                int n = getPlayerInTurn().printDrawCard()-1;
                 Scanner scanDiscard = new Scanner(System.in);
                 System.out.print("Pilihan:");
                 int pilihan = scanDiscard.nextInt();

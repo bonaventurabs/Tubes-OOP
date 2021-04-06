@@ -12,7 +12,6 @@ public class Player {
     static int jumlahPlayer = 0;
     private List<Card> playerCardList = new ArrayList<Card>();
     private List<Card> tmpCardList = new ArrayList<Card>();
-    private long startHIJI=-9999;
 
     public Player (String nama){
         this.nama = nama;   
@@ -114,6 +113,18 @@ public class Player {
             }
         }
         return retVal;
+    }
+
+    public int printDrawCard(){
+        int n = 1;
+        for (Card myCard : playerCardList){
+            if(myCard instanceof DrawFourCard || myCard instanceof DrawTwoCard){
+                tmpCardList.add(myCard);
+                System.out.println(n + ". "+((CardMethod)myCard).toString());
+                n++;
+            }
+        }
+        return n;
     }
 
     public void declareHIJI() {
