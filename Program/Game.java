@@ -188,6 +188,7 @@ public class Game {
             } else {
                 // Next turn
                 nextTurn();
+                System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
             }
         }
         else {
@@ -206,6 +207,7 @@ public class Game {
             System.out.println("3. Hijau");
             System.out.println("4. Biru");
             Scanner scanWild = new Scanner(System.in);
+            System.out.print("Pilihan:");
             int n = scanWild.nextInt();
             while (n<1||n>4){
                 System.out.println("Pilihan salah, pilihan warna:");
@@ -238,6 +240,7 @@ public class Game {
             System.out.println("3. Hijau");
             System.out.println("4. Biru");
             Scanner scanWild = new Scanner(System.in);
+            System.out.print("Pilihan:");
             int n = scanWild.nextInt();
             while (n<1||n>4){
                 System.out.println("Pilihan salah, pilihan warna:");
@@ -273,6 +276,7 @@ public class Game {
             System.out.println("Kamu bisa multiple discard, pilih 0 untuk tidak multiple discard.");
             int n = getPlayerInTurn().printMultipleDiscardable(Deck.getDiscardPile())-1;
             Scanner scanMDiscard = new Scanner(System.in);
+            System.out.print("Pilihan:");
             int pilihan = scanMDiscard.nextInt();
             while (pilihan<0 || pilihan >n){
                 System.out.print("Masukan pilihan salah. Pilihan:");
@@ -283,6 +287,12 @@ public class Game {
                 getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
                 getPlayerInTurn().clearTmpCardList();
                 Deck.setMultipleDiscard(Deck.getMultipleDiscard()+1);
+                if (Deck.getDiscardPile() instanceof DrawFourCard){
+                    Deck.addPlusCounter(4);
+                }
+                else if (Deck.getDiscardPile() instanceof DrawTwoCard){
+                    Deck.addPlusCounter(2);
+                }
             }
         }
     }
