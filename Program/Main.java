@@ -52,8 +52,6 @@ public class Main {
         System.out.println("Silakan input banyaknya pemain!");
         System.out.print("Banyak pemain: ");
 
-        //Scanner scanMain = new Scanner(System.in);
-        //int playerNum= scanMain.nextInt();
         int playerNum = Scan.intScanner();
 
         System.out.println();
@@ -62,7 +60,6 @@ public class Main {
         while (playerNum<2||playerNum>6){
             System.out.println("Banyak pemain hanya bisa 2-6. Silakan ulangi input banyaknya pemain!");
             System.out.print("Banyak pemain: ");
-            //playerNum = scanMain.nextInt();
             playerNum = Scan.intScanner();
             
             System.out.println();
@@ -70,12 +67,10 @@ public class Main {
 
         // Input nama-nama player
         System.out.println("Silakan input nama-nama pemain!");
-        //scanMain.nextLine();
         List<Player> playerList = new ArrayList<Player>();
         String name;
         for (int i=1; i<=playerNum; i++){
             System.out.print("Nama pemain "+i+": ");
-            //name = scanMain.nextLine();
             name = Scan.strInput();
             playerList.add(new Player(name));
         }   
@@ -99,7 +94,7 @@ public class Main {
             System.out.println("8. Help");
 
             System.out.print("Input pilihan: ");
-            //pilihan = scanMain.nextInt();
+
             pilihan = Scan.intScanner();
             if (pilihan==8){
                 System.out.println("Peraturan Permainan:");
@@ -132,91 +127,142 @@ public class Main {
 
 
         while(game.getWinner().equals("_NO_WINNER_")){
-            
-            if (game.getNextTurn()) {
 
-                promptEnterKey();
-                clearScreen();
-                printLogo();
-                game.resetNextTurn();
-            }
+            if (!game.getDeclareHIJICommand()){
+                if (game.getNextTurn()) {
 
-            System.out.println();
-            System.out.println("Saat ini giliran: "+game.getPlayerInTurn().getNama());
-            System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
+                    promptEnterKey();
+                    clearScreen();
+                    printLogo();
+                    game.resetNextTurn();
+                }
 
-            // Output pilihan menu
+                System.out.println();
+                System.out.println("Saat ini giliran: "+game.getPlayerInTurn().getNama());
+                System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
 
-            System.out.println("Pilihan menu:");
-            System.out.println("1. List card");
-            System.out.println("2. Discard");
-            System.out.println("3. Draw");
-            System.out.println("4. Declare HIJI");
-            System.out.println("5. List Player");
-            System.out.println("6. View Player in Turn");
-            System.out.println("7. Help");
+                // Output pilihan menu
 
-            System.out.print("Input pilihan: ");
-            //pilihan = scanMain.nextInt();
-            pilihan = Scan.intScanner();
-            if (game.getDeclareHIJICommand()){
-                while(pilihan==2 || pilihan==3) {
-                    System.out.println("Giliran kamu sudah dilakukan.");
-                    System.out.println("Clue : Kamu perlu melakukan sesuatu yang penting!!!");
-                    System.out.print("Input pilihan: ");
-                    //pilihan = scanMain.nextInt();
-                    pilihan = Scan.intScanner();
+                System.out.println("Pilihan menu:");
+                System.out.println("1. List card");
+                System.out.println("2. Discard");
+                System.out.println("3. Draw");
+                System.out.println("4. Declare HIJI");
+                System.out.println("5. List Player");
+                System.out.println("6. View Player in Turn");
+                System.out.println("7. Help");
+
+                System.out.print("Input pilihan: ");
+                //pilihan = scanMain.nextInt();
+                pilihan = Scan.intScanner();
+
+                switch (pilihan){
+                    // List cards
+                    case 1:
+                        game.getPlayerInTurn().cardList();
+                        break;
+                    // Discard
+                    case 2:
+                        game.playerDiscard();
+                        break;
+                    // Draw
+                    case 3:
+                        game.playerDraw();
+                        break;
+                    // Declare HIJI
+                    case 4:
+                        game.playerDeclareHIJI();
+                        break;
+                    // List player
+                    case 5:
+                        game.printPlayerList();
+                        break;
+                    // View player in turn
+                    case 6:
+                        game.printPlayerInTurn();
+                        break;
+                    // Help
+                    case 7:
+                        System.out.println("Peraturan Permainan:");
+                        System.out.println("1) HIJI dimainkan oleh 2-6 pemain.");
+                        System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
+                        System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
+                        System.out.println("4) Aturan permainan adalah sebagai berikut.");
+                        System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
+                        System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
+                        System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
+                        System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
+                        System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
+                        System.out.println("   a) Reverse Card: memutar urutan permainan");
+                        System.out.println("   b) Skip Card: melompati giliran player selanjutnya");
+                        System.out.println("   c) Wildcard: memilih warna selanjutnya");
+                        System.out.println("   d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                        System.out.println("   e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
+                        System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                        System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
+                        break;
                 }
             }
+            else {
+                // Sedang declare HIJI
+                // Output pilihan menu
+                game.startTimerHIJI();
 
-            switch (pilihan){
-                // List cards
-                case 1:
-                    game.getPlayerInTurn().cardList();
-                    break;
-                // Discard
-                case 2:
-                    game.playerDiscard();
-                    if (game.getDeclareHIJICommand()){
-                        game.startTimerHIJI();
-                    }
-                    break;
-                // Draw
-                case 3:
-                    game.playerDraw();
-                    break;
-                // Declare HIJI
-                case 4:
-                    game.playerDeclareHIJI();
-                    break;
-                // List player
-                case 5:
-                    game.printPlayerList();
-                    break;
-                // View player in turn
-                case 6:
-                    game.printPlayerInTurn();
-                    break;
-                // Help
-                case 7:
-                    System.out.println("Peraturan Permainan:");
-                    System.out.println("1) HIJI dimainkan oleh 2-6 pemain.");
-                    System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
-                    System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
-                    System.out.println("4) Aturan permainan adalah sebagai berikut.");
-                    System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
-                    System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
-                    System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
-                    System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
-                    System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
-                    System.out.println("   a) Reverse Card: memutar urutan permainan");
-                    System.out.println("   b) Skip Card: melompati giliran player selanjutnya");
-                    System.out.println("   c) Wildcard: memilih warna selanjutnya");
-                    System.out.println("   d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
-                    System.out.println("   e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
-                    System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
-                    System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
-                    break;
+                System.out.println();
+                System.out.println("Pilihan menu:");
+                System.out.println("1. List card");
+                System.out.println("2. Discard");
+                System.out.println("3. Draw");
+                System.out.println("4. Declare HIJI");
+                System.out.println("5. List Player");
+                System.out.println("6. View Player in Turn");
+                System.out.println("7. Help");
+
+                System.out.print("Input pilihan: ");
+                String input = Scan.strInput();
+                switch (input){
+                    // Card List
+                    case ("1"):
+                        game.getPlayerInTurn().cardList();
+                        break;
+                    // Declare HIJI
+                    case ("4"):
+                        game.playerDeclareHIJI();
+                        break;
+                    // List player
+                    case ("5"):
+                        game.printPlayerList();
+                        break;
+                    // View player in turn
+                    case ("6"):
+                        game.printPlayerInTurn();
+                        break;
+                    // Help
+                    case ("7"):
+                        System.out.println("Peraturan Permainan:");
+                        System.out.println("1) HIJI dimainkan oleh 2-6 pemain.");
+                        System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
+                        System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
+                        System.out.println("4) Aturan permainan adalah sebagai berikut.");
+                        System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
+                        System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
+                        System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
+                        System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
+                        System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
+                        System.out.println("   a) Reverse Card: memutar urutan permainan");
+                        System.out.println("   b) Skip Card: melompati giliran player selanjutnya");
+                        System.out.println("   c) Wildcard: memilih warna selanjutnya");
+                        System.out.println("   d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                        System.out.println("   e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
+                        System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                        System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
+                        break;
+                    case (""):
+                        break;
+                    default :
+                        System.out.println("Clue : Kamu perlu melakukan sesuatu yang penting!");
+                        break;
+                }
             }
         }
 
@@ -226,9 +272,6 @@ public class Main {
     }
     public static void promptEnterKey(){
         System.out.println("Tekan enter untuk pindah giliran.");
-        //Scanner scanner = new Scanner(System.in);
-        //scanner.nextLine();
         Scan.strInput();
-        //scanner.close();
     }
 }

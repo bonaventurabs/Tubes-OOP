@@ -17,7 +17,7 @@ public class Player {
         this.nama = nama;   
         jumlahPlayer ++;
         // Jumlah kartu awal 7 (3 khusus untuk testing)
-        for (int i=0; i<7; i++){
+        for (int i=0; i<2; i++){
             playerCardList.add(Deck.getTopCard());
             Deck.moveCardtoPlayer();
         }

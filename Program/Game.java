@@ -78,14 +78,11 @@ public class Game {
                 System.out.println("Kamu bisa langsung mengeluarkan kartu yang kamu ambil!");
                 System.out.println("1. Tidak discard");
                 System.out.println("2. Langsung discard");
-                //Scanner scanDraw = new Scanner(System.in);
                 System.out.print("Pilihan:");
-                //int pilihan = scanDraw.nextInt();
                 int pilihan = Scan.intScanner();
 
                 while (pilihan<1 || pilihan>2){
                     System.out.print("Masukan pilihan salah. Pilihan:");
-                    //pilihan = scanDraw.nextInt();
                     pilihan = Scan.intScanner();
                 }
                 if (pilihan==2){
@@ -130,16 +127,13 @@ public class Game {
                 System.out.println("Pilih 0 untuk balik ke menu.");
                 System.out.println("List Kartu yang bisa didiscard:");
                 int n = getPlayerInTurn().printDrawCard()-1;
-                //Scanner scanDiscard = new Scanner(System.in);
                 System.out.print("Pilihan:");
-                //int pilihan = scanDiscard.nextInt();
                 int pilihan = Scan.intScanner();
                 Deck.setMultipleDiscard(1);
 
                 // Discard
                 while (pilihan<0 || pilihan >n){
                     System.out.print("Masukan pilihan salah. Pilihan:");
-                    //pilihan = scanDiscard.nextInt();
                     pilihan = Scan.intScanner();
                 }
                 if (pilihan!=0){
@@ -152,7 +146,6 @@ public class Game {
                     // Khusus wildcard/draw 4
                     pilihNextWarna();
 
-                    // TODO CEK DECLARE HIJI
                     if (getPlayerInTurn().getNumOfCard()==1) {
                         declareHIJICommand();
                     } else {
@@ -171,15 +164,12 @@ public class Game {
             System.out.println("Pilih 0 untuk balik ke menu.");
             System.out.println("List Kartu yang bisa didiscard:");
             int n = getPlayerInTurn().printDiscardable()-1;
-            //Scanner scanDiscard = new Scanner(System.in);
             System.out.print("Pilihan:");
-            //int pilihan = scanDiscard.nextInt();
             int pilihan = Scan.intScanner();
 
             // Discard
             while (pilihan<0 || pilihan >n){
                 System.out.print("Masukan pilihan salah. Pilihan:");
-                //pilihan = scanDiscard.nextInt();
                 pilihan = Scan.intScanner();
             }
             if (pilihan!=0){
@@ -200,7 +190,6 @@ public class Game {
                 // Khusus wildcard/draw 4
                 pilihNextWarna();
 
-                // TODO CEK DECLARE HIJI
                 if (getPlayerInTurn().getNumOfCard()==1) {
                     declareHIJICommand();
                 } else {
@@ -226,9 +215,7 @@ public class Game {
             System.out.println("2. Kuning");
             System.out.println("3. Hijau");
             System.out.println("4. Biru");
-            //Scanner scanWild = new Scanner(System.in);
             System.out.print("Pilihan:");
-            //int n = scanWild.nextInt();
             int n = Scan.intScanner();
             while (n<1||n>4){
                 System.out.println("Pilihan salah, pilihan warna:");
@@ -236,7 +223,6 @@ public class Game {
                 System.out.println("2. Kuning");
                 System.out.println("3. Hijau");
                 System.out.println("4. Biru");
-                //n = scanWild.nextInt();
                 n = Scan.intScanner();
             }
             switch (n){
@@ -261,9 +247,7 @@ public class Game {
             System.out.println("2. Kuning");
             System.out.println("3. Hijau");
             System.out.println("4. Biru");
-            //Scanner scanWild = new Scanner(System.in);
             System.out.print("Pilihan:");
-            //int n = scanWild.nextInt();
             int n = Scan.intScanner();
             while (n<1||n>4){
                 System.out.println("Pilihan salah, pilihan warna:");
@@ -271,7 +255,6 @@ public class Game {
                 System.out.println("2. Kuning");
                 System.out.println("3. Hijau");
                 System.out.println("4. Biru");
-                //n = scanWild.nextInt();
                 n = Scan.intScanner();
             }
             switch (n){
@@ -299,13 +282,10 @@ public class Game {
         while (getPlayerInTurn().multipleDiscardable(Deck.getDiscardPile())){
             System.out.println("Kamu bisa multiple discard. Pilih 0 untuk tidak multiple discard.");
             int n = getPlayerInTurn().printMultipleDiscardable(Deck.getDiscardPile())-1;
-            //Scanner scanMDiscard = new Scanner(System.in);
             System.out.print("Pilihan:");
-            //int pilihan = scanMDiscard.nextInt();
             int pilihan = Scan.intScanner();
             while (pilihan<0 || pilihan >n){
                 System.out.print("Masukan pilihan salah. Pilihan:");
-                //pilihan = scanMDiscard.nextInt();
                 pilihan = Scan.intScanner();
             }
             if (pilihan==0) break;
@@ -527,8 +507,8 @@ public class Game {
         public void run() {
             try {
                 while (!Thread.interrupted()) {
+                    Thread.sleep(100);
                     if (getSudahDeclareHIJI()) {
-                        Thread.sleep(50);
                         break;
                     }
                 }
@@ -538,13 +518,14 @@ public class Game {
                 getPlayerInTurn().draw(2);
                 nextTurn();
                 System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
+                System.out.println("Tekan enter untuk proses selanjutnya.");
             }
         }
     }
     public void startTimerHIJI() {
         Thread t = new Thread(new CheckRunningHIJI());
         Timer timer = new Timer();
-        System.out.println("Start timer");
+        //System.out.println("Start timer");
         timer.schedule(new TimeOutHIJI(t, timer), 3*1000);
         t.start();
     }
