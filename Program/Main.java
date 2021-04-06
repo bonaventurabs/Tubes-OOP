@@ -7,11 +7,27 @@ import java.util.*;
 //import kartu.*;
 
 public class Main {
+    public static void printLogo() {
+        System.out.println("      .----------------.  .----------------.  .----------------.  .----------------.  ");
+        System.out.println("      | .--------------. || .--------------. || .--------------. || .--------------. |");
+        System.out.println("      | |  ____  ____  | || |     _____    | || |     _____    | || |     _____    | |");
+        System.out.println("      | | |_   ||   _| | || |    |_   _|   | || |    |_   _|   | || |    |_   _|   | |");
+        System.out.println("      | |   | |__| |   | || |      | |     | || |      | |     | || |      | |     | |");
+        System.out.println("      | |   |  __  |   | || |      | |     | || |   _  | |     | || |      | |     | |");
+        System.out.println("      | |  _| |  | |_  | || |     _| |_    | || |  | |_' |     | || |     _| |_    | |");
+        System.out.println("      | | |____||____| | || |    |_____|   | || |  `.___.'     | || |    |_____|   | |");
+        System.out.println("      | |              | || |              | || |              | || |              | |");
+        System.out.println("      | '--------------' || '--------------' || '--------------' || '--------------' |");
+        System.out.println("      '----------------'  '----------------'  '----------------'  '----------------' "); 
+        System.out.println();      
+    }
+
     public static void main(String[] args) {
 
         new Deck();
 
         // Pesan selamat datang
+        printLogo();
         System.out.println("Selamat datang di game HIJI");
 
         // Input ada berapa player
