@@ -78,13 +78,15 @@ public class Game {
                 System.out.println("Kamu bisa langsung mengeluarkan kartu yang kamu ambil!");
                 System.out.println("1. Tidak discard");
                 System.out.println("2. Langsung discard");
-                Scanner scanDraw = new Scanner(System.in);
+                //Scanner scanDraw = new Scanner(System.in);
                 System.out.print("Pilihan:");
-                int pilihan = scanDraw.nextInt();
+                //int pilihan = scanDraw.nextInt();
+                int pilihan = Scan.intScanner();
 
                 while (pilihan<1 || pilihan>2){
                     System.out.print("Masukan pilihan salah. Pilihan:");
-                    pilihan = scanDraw.nextInt();
+                    //pilihan = scanDraw.nextInt();
+                    pilihan = Scan.intScanner();
                 }
                 if (pilihan==2){
                     getPlayerInTurn().discardLastCard();
@@ -127,15 +129,17 @@ public class Game {
                 // Print + minta pilihan discard
                 System.out.println("List Kartu yang bisa didiscard:");
                 int n = getPlayerInTurn().printDrawCard()-1;
-                Scanner scanDiscard = new Scanner(System.in);
+                //Scanner scanDiscard = new Scanner(System.in);
                 System.out.print("Pilihan:");
-                int pilihan = scanDiscard.nextInt();
+                //int pilihan = scanDiscard.nextInt();
+                int pilihan = Scan.intScanner();
                 Deck.setMultipleDiscard(1);
 
                 // Discard
                 while (pilihan<1 || pilihan >n){
                     System.out.print("Masukan pilihan salah. Pilihan:");
-                    pilihan = scanDiscard.nextInt();
+                    //pilihan = scanDiscard.nextInt();
+                    pilihan = Scan.intScanner();
                 }
                 getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
                 getPlayerInTurn().clearTmpCardList();
@@ -163,14 +167,16 @@ public class Game {
             // Print + minta pilihan discard
             System.out.println("List Kartu yang bisa didiscard:");
             int n = getPlayerInTurn().printDiscardable()-1;
-            Scanner scanDiscard = new Scanner(System.in);
+            //Scanner scanDiscard = new Scanner(System.in);
             System.out.print("Pilihan:");
-            int pilihan = scanDiscard.nextInt();
+            //int pilihan = scanDiscard.nextInt();
+            int pilihan = Scan.intScanner();
 
             // Discard
             while (pilihan<1 || pilihan >n){
                 System.out.print("Masukan pilihan salah. Pilihan:");
-                pilihan = scanDiscard.nextInt();
+                //pilihan = scanDiscard.nextInt();
+                pilihan = Scan.intScanner();
             }
             getPlayerInTurn().discard(getPlayerInTurn().getTmpCardList(pilihan-1));
             getPlayerInTurn().clearTmpCardList();
@@ -214,16 +220,18 @@ public class Game {
             System.out.println("2. Kuning");
             System.out.println("3. Hijau");
             System.out.println("4. Biru");
-            Scanner scanWild = new Scanner(System.in);
+            //Scanner scanWild = new Scanner(System.in);
             System.out.print("Pilihan:");
-            int n = scanWild.nextInt();
+            //int n = scanWild.nextInt();
+            int n = Scan.intScanner();
             while (n<1||n>4){
                 System.out.println("Pilihan salah, pilihan warna:");
                 System.out.println("1. Merah");
                 System.out.println("2. Kuning");
                 System.out.println("3. Hijau");
                 System.out.println("4. Biru");
-                n = scanWild.nextInt();
+                //n = scanWild.nextInt();
+                n = Scan.intScanner();
             }
             switch (n){
                 case 1:
@@ -239,7 +247,6 @@ public class Game {
                     ((Wildcard)(Deck.getDiscardPile())).setNextWarna(CardColor.BIRU);
                     break;
             }
-            //scanWild.close();
         }
         else if (Deck.getDiscardPile() instanceof DrawFourCard){
             System.out.println();
@@ -248,16 +255,18 @@ public class Game {
             System.out.println("2. Kuning");
             System.out.println("3. Hijau");
             System.out.println("4. Biru");
-            Scanner scanWild = new Scanner(System.in);
+            //Scanner scanWild = new Scanner(System.in);
             System.out.print("Pilihan:");
-            int n = scanWild.nextInt();
+            //int n = scanWild.nextInt();
+            int n = Scan.intScanner();
             while (n<1||n>4){
                 System.out.println("Pilihan salah, pilihan warna:");
                 System.out.println("1. Merah");
                 System.out.println("2. Kuning");
                 System.out.println("3. Hijau");
                 System.out.println("4. Biru");
-                n = scanWild.nextInt();
+                //n = scanWild.nextInt();
+                n = Scan.intScanner();
             }
             switch (n){
                 case 1:
@@ -273,7 +282,6 @@ public class Game {
                     ((DrawFourCard)(Deck.getDiscardPile())).setNextWarna(CardColor.BIRU);
                     break;
             }
-            //scanWild.close();
         }
     }
 
@@ -285,12 +293,14 @@ public class Game {
         while (getPlayerInTurn().multipleDiscardable(Deck.getDiscardPile())){
             System.out.println("Kamu bisa multiple discard, pilih 0 untuk tidak multiple discard.");
             int n = getPlayerInTurn().printMultipleDiscardable(Deck.getDiscardPile())-1;
-            Scanner scanMDiscard = new Scanner(System.in);
+            //Scanner scanMDiscard = new Scanner(System.in);
             System.out.print("Pilihan:");
-            int pilihan = scanMDiscard.nextInt();
+            //int pilihan = scanMDiscard.nextInt();
+            int pilihan = Scan.intScanner();
             while (pilihan<0 || pilihan >n){
                 System.out.print("Masukan pilihan salah. Pilihan:");
-                pilihan = scanMDiscard.nextInt();
+                //pilihan = scanMDiscard.nextInt();
+                pilihan = Scan.intScanner();
             }
             if (pilihan==0) break;
             else {

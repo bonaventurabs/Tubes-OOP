@@ -29,6 +29,7 @@ public class Main {
     public static void main(String[] args) {
 
         new Deck();
+        new Scan();
 
         // Pesan selamat datang
         clearScreen();
@@ -38,35 +39,39 @@ public class Main {
         // Input ada berapa player
         System.out.println("Silakan input banyaknya pemain!");
         System.out.print("Banyak pemain: ");
-        Scanner scanMain = new Scanner(System.in);
-        int playerNum= scanMain.nextInt();
+
+        //Scanner scanMain = new Scanner(System.in);
+        //int playerNum= scanMain.nextInt();
+        int playerNum = Scan.intScanner();
+
         System.out.println();
 
         // Kalo jumlah player ga 2-6
         while (playerNum<2||playerNum>6){
             System.out.println("Banyak pemain hanya bisa 2-6. Silakan ulangi input banyaknya pemain!");
             System.out.print("Banyak pemain: ");
-            playerNum = scanMain.nextInt();
+            //playerNum = scanMain.nextInt();
+            playerNum = Scan.intScanner();
+            
             System.out.println();
         }
 
         // Input nama-nama player
         System.out.println("Silakan input nama-nama pemain!");
-        scanMain.nextLine();
+        //scanMain.nextLine();
         List<Player> playerList = new ArrayList<Player>();
         String name;
         for (int i=1; i<=playerNum; i++){
             System.out.print("Nama pemain "+i+": ");
-            name = scanMain.nextLine();
+            //name = scanMain.nextLine();
+            name = Scan.strInput();
             playerList.add(new Player(name));
         }   
         System.out.println();
 
         // Looping game
-        //scanMain.nextLine();
 
         int pilihan=0;
-
         // Start game
         while (pilihan!=1){
             // Output pilihan menu
@@ -82,7 +87,8 @@ public class Main {
             System.out.println("8. Help");
 
             System.out.print("Input pilihan: ");
-            pilihan = scanMain.nextInt();
+            //pilihan = scanMain.nextInt();
+            pilihan = Scan.intScanner();
             if (pilihan==8){
                 System.out.println("Peraturan Permainan:");
                 System.out.println("1) HIJI dimainkan oleh 2-6 pemain.");
@@ -139,7 +145,8 @@ public class Main {
             System.out.println("7. Help");
 
             System.out.print("Input pilihan: ");
-            pilihan = scanMain.nextInt();
+            //pilihan = scanMain.nextInt();
+            pilihan = Scan.intScanner();
 
             if (game.getDeclareHIJICommand()){
                 game.startTimerHIJI();
@@ -196,11 +203,13 @@ public class Main {
 
         System.out.println("Selamat! HIJI dimenangkan oleh: "+game.getWinner());
         System.out.println("Terima kasih telah bermain.");
-        //scanMain.close();
+        Scan.closeScanner();
     }
     public static void promptEnterKey(){
         System.out.println("Tekan enter untuk pindah giliran.");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        //Scanner scanner = new Scanner(System.in);
+        //scanner.nextLine();
+        Scan.strInput();
+        //scanner.close();
     }
 }
