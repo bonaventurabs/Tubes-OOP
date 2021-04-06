@@ -210,7 +210,7 @@ public class Main {
             else {
                 // Sedang declare HIJI
                 // Output pilihan menu
-                game.startTimerHIJI();
+                if(!game.isSudahKenaTimer()) game.startTimerHIJI();
 
                 System.out.println("                                            ======== PILIHAN MENU ========");
                 System.out.println("                                            ||" + TEXT_CYAN + "  1. List card             "+TEXT_CYAN+TEXT_RESET+"||");

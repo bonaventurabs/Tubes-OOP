@@ -15,6 +15,7 @@ public class Game {
     private boolean sudahDeclareHIJI = false;
     private boolean nextTurn = false;
     private String winner = "_NO_WINNER_";
+    private boolean sudahKenaTimer = false;
 
     /**
      * Constructor Game
@@ -485,6 +486,11 @@ public class Game {
     public void resetDeclareHIJI() {
         harusDeclareHIJI = false;
         sudahDeclareHIJI = false;
+        sudahKenaTimer = false;
+    }
+
+    public boolean isSudahKenaTimer(){
+        return sudahKenaTimer;
     }
 
     public class TimeOutHIJI extends TimerTask {
@@ -535,6 +541,7 @@ public class Game {
         //System.out.println("Start timer");
         timer.schedule(new TimeOutHIJI(t, timer), 3*1000);
         t.start();
+        sudahKenaTimer = true;
     }
 
     /**
