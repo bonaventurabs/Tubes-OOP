@@ -62,7 +62,25 @@ public class Main {
 
             System.out.print("Input pilihan: ");
             pilihan = scanMain.nextInt();
-            if (pilihan!=1){
+            if (pilihan==8){
+                System.out.println("Peraturan Permainan:");
+                System.out.println("1) HIJI dimainkan oleh 2-6 pemain.");
+                System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
+                System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
+                System.out.println("4) Aturan permainan adalah sebagai berikut.");
+                System.out.println("a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut. Ketentuan kartu apa saja yang boleh dikeluarkan ada pada tabel Jenis Kartu.");
+                System.out.println("b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
+                System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
+                System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
+                System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
+                System.out.println("a) Reverse Card:");
+                System.out.println("b) Skip Card: ");
+                System.out.println("c) Draw Two Card: ");
+                System.out.println("d) Draw Four Card: ");
+                System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
+            }
+            else if (pilihan!=1){
                 System.out.println("Kamu belum start game");
             }
         }

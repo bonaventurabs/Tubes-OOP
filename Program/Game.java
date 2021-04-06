@@ -305,12 +305,12 @@ public class Game {
             reverseIdx(Deck.getMultipleDiscard());
             nextIdxNumberCard(1);
         }
-        else if (Deck.getDiscardPile() instanceof DrawTwoCard){
-            if (Deck.getIsDrawActive()) Deck.addPlusCounter(2);
-            nextIdxNumberCard(1);
-        }
         else if (Deck.getDiscardPile() instanceof DrawFourCard){
             if (Deck.getIsDrawActive()) Deck.addPlusCounter(4);
+            nextIdxNumberCard(1);
+        }
+        else if (Deck.getDiscardPile() instanceof DrawTwoCard){
+            if (Deck.getIsDrawActive()) Deck.addPlusCounter(2);
             nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof Wildcard){
