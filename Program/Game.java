@@ -305,11 +305,11 @@ public class Game {
             nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof DrawTwoCard){
-            Deck.addPlusCounter(2);
+            if (Deck.getIsDrawActive()) Deck.addPlusCounter(2);
             nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof DrawFourCard){
-            Deck.addPlusCounter(4);
+            if (Deck.getIsDrawActive()) Deck.addPlusCounter(4);
             nextIdxNumberCard(1);
         }
         else if (Deck.getDiscardPile() instanceof Wildcard){
