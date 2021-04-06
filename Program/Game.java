@@ -87,6 +87,11 @@ public class Game {
                 }
                 if (pilihan==2){
                     getPlayerInTurn().discardLastCard();
+                    // Aktifin power
+                    if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard) Deck.setIsDrawActive(true);
+                    else if (Deck.getDiscardPile() instanceof ReverseCard) Deck.setIsReverseActive(true);
+                    else if (Deck.getDiscardPile() instanceof SkipCard) Deck.setIsSkipActive(true);
+                    // Khusus draw 4
                     pilihNextWarna();
                 }
             }
@@ -180,10 +185,8 @@ public class Game {
                 // Multiple discard
                 playerMultipleDiscard();
 
-                // Aktifin draw kalau ngediscard kartu draw
-                if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard){
-                    Deck.setIsDrawActive(true);
-                }
+                // Aktifin power
+                if (Deck.getDiscardPile() instanceof DrawTwoCard || Deck.getDiscardPile() instanceof DrawFourCard) Deck.setIsDrawActive(true);
                 else if (Deck.getDiscardPile() instanceof ReverseCard) Deck.setIsReverseActive(true);
                 else if (Deck.getDiscardPile() instanceof SkipCard) Deck.setIsSkipActive(true);
 
