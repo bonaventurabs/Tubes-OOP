@@ -275,6 +275,7 @@ public class Main {
         System.out.println("Selamat! HIJI dimenangkan oleh: "+game.getWinner());
         System.out.println("Terima kasih telah bermain.");
         Scan.closeScanner();
+        System.exit(0);
     }
     public static void promptEnterKey(){
         System.out.println("Tekan enter untuk pindah giliran.");
