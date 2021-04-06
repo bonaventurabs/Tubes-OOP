@@ -30,7 +30,7 @@ public class Main {
         System.out.println(TEXT_RED + "                  | | |____||____| | | " + TEXT_RED + TEXT_GREEN + "| |    |_____|   | |" + TEXT_GREEN + TEXT_YELLOW + "| |  `.___.'     | |" + TEXT_YELLOW + TEXT_BLUE + "| |    |_____|   | |" + TEXT_BLUE);
         System.out.println(TEXT_RED + "                  | |              | | " + TEXT_RED + TEXT_GREEN + "| |              | |" + TEXT_GREEN + TEXT_YELLOW + "| |              | |" + TEXT_YELLOW + TEXT_BLUE + "| |              | |" + TEXT_BLUE);
         System.out.println(TEXT_RED + "                  | '--------------' | " + TEXT_RED + TEXT_GREEN + "| '--------------' |" + TEXT_GREEN + TEXT_YELLOW + "| '--------------' |" + TEXT_YELLOW + TEXT_BLUE + "| '--------------' |" + TEXT_BLUE);
-        System.out.println(TEXT_RED + "                  '----------------'   " + TEXT_RED + TEXT_GREEN + "'----------------'  " + TEXT_GREEN + TEXT_YELLOW + "'----------------'  " + TEXT_YELLOW + TEXT_BLUE + " '----------------' " + TEXT_BLUE); 
+        System.out.println(TEXT_RED + "                  '----------------'   " + TEXT_RED + TEXT_GREEN + "'----------------'  " + TEXT_GREEN + TEXT_YELLOW + "'----------------'  " + TEXT_YELLOW + TEXT_BLUE + " '----------------' " + TEXT_BLUE + TEXT_RESET); 
         System.out.println();      
     }
 
@@ -83,17 +83,18 @@ public class Main {
         while (pilihan!=1){
             // Output pilihan menu
 
-            System.out.println("Pilihan menu:");
-            System.out.println("1. Start game");
-            System.out.println("2. List card");
-            System.out.println("3. Discard");
-            System.out.println("4. Draw");
-            System.out.println("5. Declare HIJI");
-            System.out.println("6. List Player");
-            System.out.println("7. View Player in Turn");
-            System.out.println("8. Help");
+            System.out.println("                                            ======== PILIHAN MENU ========");
+            System.out.println("                                            ||" + TEXT_CYAN + "  1. Start game            "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  2. List card             "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  3. Discard               "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  4. Draw                  "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  5. Declare HIJI          "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  6. List Player           "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  7. View Player in Turn   "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ||" + TEXT_CYAN + "  8. Help                  "+TEXT_CYAN+TEXT_RESET+"||");
+            System.out.println("                                            ==============================");
 
-            System.out.print("Input pilihan: ");
+            System.out.print("                                                   Input pilihan: ");
 
             pilihan = Scan.intScanner();
             if (pilihan==8){
@@ -102,17 +103,18 @@ public class Main {
                 System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
                 System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
                 System.out.println("4) Aturan permainan adalah sebagai berikut.");
-                System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
-                System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
-                System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
-                System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
+                System.out.println("a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
+                System.out.println("b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
+                System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
+                System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
                 System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
-                System.out.println("   a) Reverse Card: memutar urutan permainan");
-                System.out.println("   b) Skip Card: melompati giliran player selanjutnya");
-                System.out.println("   c) Wildcard: memilih warna selanjutnya");
-                System.out.println("   d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
-                System.out.println("   e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
-                System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                System.out.println("a) Reverse Card: memutar urutan permainan");
+                System.out.println("b) Skip Card: melompati giliran player selanjutnya");
+                System.out.println("c) Wildcard: memilih warna selanjutnya");
+                System.out.println("d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                System.out.println("e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
+                System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik."); 
+                System.out.println("   Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
                 System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
             }
             else if (pilihan!=1){
@@ -143,17 +145,18 @@ public class Main {
 
                 // Output pilihan menu
 
-                System.out.println("Pilihan menu:");
-                System.out.println("1. List card");
-                System.out.println("2. Discard");
-                System.out.println("3. Draw");
-                System.out.println("4. Declare HIJI");
-                System.out.println("5. List Player");
-                System.out.println("6. View Player in Turn");
-                System.out.println("7. Help");
+                System.out.println("                                            ======== PILIHAN MENU ========");
+                System.out.println("                                            ||" + TEXT_CYAN + "  1. List card             "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  2. Discard               "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  3. Draw                  "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  4. Declare HIJI          "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  5. List Player           "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  6. View Player in Turn   "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  7. Help                  "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ==============================");
 
-                System.out.print("Input pilihan: ");
-                //pilihan = scanMain.nextInt();
+                System.out.print("                                                   Input pilihan: ");
+                
                 pilihan = Scan.intScanner();
 
                 switch (pilihan){
@@ -188,17 +191,18 @@ public class Main {
                         System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
                         System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
                         System.out.println("4) Aturan permainan adalah sebagai berikut.");
-                        System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
-                        System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
-                        System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
-                        System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
+                        System.out.println("a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
+                        System.out.println("b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
+                        System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
+                        System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
                         System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
-                        System.out.println("   a) Reverse Card: memutar urutan permainan");
-                        System.out.println("   b) Skip Card: melompati giliran player selanjutnya");
-                        System.out.println("   c) Wildcard: memilih warna selanjutnya");
-                        System.out.println("   d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
-                        System.out.println("   e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
-                        System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                        System.out.println("a) Reverse Card: memutar urutan permainan");
+                        System.out.println("b) Skip Card: melompati giliran player selanjutnya");
+                        System.out.println("c) Wildcard: memilih warna selanjutnya");
+                        System.out.println("d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                        System.out.println("e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
+                        System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik."); 
+                        System.out.println("   Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
                         System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                         break;
                 }
@@ -208,17 +212,18 @@ public class Main {
                 // Output pilihan menu
                 game.startTimerHIJI();
 
-                System.out.println();
-                System.out.println("Pilihan menu:");
-                System.out.println("1. List card");
-                System.out.println("2. Discard");
-                System.out.println("3. Draw");
-                System.out.println("4. Declare HIJI");
-                System.out.println("5. List Player");
-                System.out.println("6. View Player in Turn");
-                System.out.println("7. Help");
+                System.out.println("                                            ======== PILIHAN MENU ========");
+                System.out.println("                                            ||" + TEXT_CYAN + "  1. List card             "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  2. Discard               "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  3. Draw                  "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  4. Declare HIJI          "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  5. List Player           "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  6. View Player in Turn   "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ||" + TEXT_CYAN + "  7. Help                  "+TEXT_CYAN+TEXT_RESET+"||");
+                System.out.println("                                            ==============================");
 
-                System.out.print("Input pilihan: ");
+                System.out.print("                                                   Input pilihan: ");
+                
                 String input = Scan.strInput();
                 switch (input){
                     // Card List
@@ -244,17 +249,18 @@ public class Main {
                         System.out.println("2) Di awal permainan, semua pemain akan mendapatkan 7 buah kartu, dan satu kartu angka dipilih secara acak untuk dijadikan kartu awal.");
                         System.out.println("3) Pemain yang akan memulai giliran pertama akan diacak.");
                         System.out.println("4) Aturan permainan adalah sebagai berikut.");
-                        System.out.println("   a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
-                        System.out.println("   b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
-                        System.out.println("   c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
-                        System.out.println("   d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
+                        System.out.println("a) Pada setiap giliran, pemain boleh mengeluarkan satu atau lebih kartu yang dapat dimainkan pada giliran tersebut.");
+                        System.out.println("b) Apabila pemain tidak mengeluarkan kartu, pemain wajib mengambil satu kartu dari deck.");
+                        System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
+                        System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
                         System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
-                        System.out.println("   a) Reverse Card: memutar urutan permainan");
-                        System.out.println("   b) Skip Card: melompati giliran player selanjutnya");
-                        System.out.println("   c) Wildcard: memilih warna selanjutnya");
-                        System.out.println("   d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
-                        System.out.println("   e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
-                        System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
+                        System.out.println("a) Reverse Card: memutar urutan permainan");
+                        System.out.println("b) Skip Card: melompati giliran player selanjutnya");
+                        System.out.println("c) Wildcard: memilih warna selanjutnya");
+                        System.out.println("d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                        System.out.println("e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
+                        System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik."); 
+                        System.out.println("   Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
                         System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                         break;
                     case (""):
