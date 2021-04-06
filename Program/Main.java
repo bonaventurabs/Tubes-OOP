@@ -8,25 +8,30 @@ import java.util.*;
 
 public class Main {
     public static void printLogo() {
-        System.out.println("      .----------------.  .----------------.  .----------------.  .----------------.  ");
-        System.out.println("      | .--------------. || .--------------. || .--------------. || .--------------. |");
-        System.out.println("      | |  ____  ____  | || |     _____    | || |     _____    | || |     _____    | |");
-        System.out.println("      | | |_   ||   _| | || |    |_   _|   | || |    |_   _|   | || |    |_   _|   | |");
-        System.out.println("      | |   | |__| |   | || |      | |     | || |      | |     | || |      | |     | |");
-        System.out.println("      | |   |  __  |   | || |      | |     | || |   _  | |     | || |      | |     | |");
-        System.out.println("      | |  _| |  | |_  | || |     _| |_    | || |  | |_' |     | || |     _| |_    | |");
-        System.out.println("      | | |____||____| | || |    |_____|   | || |  `.___.'     | || |    |_____|   | |");
-        System.out.println("      | |              | || |              | || |              | || |              | |");
-        System.out.println("      | '--------------' || '--------------' || '--------------' || '--------------' |");
-        System.out.println("      '----------------'  '----------------'  '----------------'  '----------------' "); 
+        System.out.println("                  .----------------.  .----------------.  .----------------.  .----------------.  ");
+        System.out.println("                  | .--------------. || .--------------. || .--------------. || .--------------. |");
+        System.out.println("                  | |  ____  ____  | || |     _____    | || |     _____    | || |     _____    | |");
+        System.out.println("                  | | |_   ||   _| | || |    |_   _|   | || |    |_   _|   | || |    |_   _|   | |");
+        System.out.println("                  | |   | |__| |   | || |      | |     | || |      | |     | || |      | |     | |");
+        System.out.println("                  | |   |  __  |   | || |      | |     | || |   _  | |     | || |      | |     | |");
+        System.out.println("                  | |  _| |  | |_  | || |     _| |_    | || |  | |_' |     | || |     _| |_    | |");
+        System.out.println("                  | | |____||____| | || |    |_____|   | || |  `.___.'     | || |    |_____|   | |");
+        System.out.println("                  | |              | || |              | || |              | || |              | |");
+        System.out.println("                  | '--------------' || '--------------' || '--------------' || '--------------' |");
+        System.out.println("                  '----------------'  '----------------'  '----------------'  '----------------' "); 
         System.out.println();      
     }
 
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
     public static void main(String[] args) {
 
         new Deck();
 
         // Pesan selamat datang
+        clearScreen();
         printLogo();
         System.out.println("Selamat datang di game HIJI");
 
