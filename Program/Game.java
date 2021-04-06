@@ -482,6 +482,10 @@ public class Game {
         return harusDeclareHIJI && !sudahDeclareHIJI;
     }
 
+    public boolean getharusDeclareHIJI() {
+        return harusDeclareHIJI;
+    }
+
     public void setSudahDeclareHIJI() {
         sudahDeclareHIJI = true;
     }
@@ -517,8 +521,8 @@ public class Game {
         public void run() {
             try {
                 while (!Thread.interrupted()) {
-                    Thread.sleep(1000);
                     if (getSudahDeclareHIJI()) {
+                        Thread.sleep(50);
                         break;
                     }
                 }
