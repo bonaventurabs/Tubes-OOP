@@ -81,7 +81,7 @@ public class Game {
                 System.out.print("Pilihan:");
                 int pilihan = scanDraw.nextInt();
 
-                while (pilihan!=1 || pilihan !=2){
+                while (pilihan<1 || pilihan>2){
                     System.out.print("Masukan pilihan salah. Pilihan:");
                     pilihan = scanDraw.nextInt();
                 }
