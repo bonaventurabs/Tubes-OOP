@@ -435,7 +435,7 @@ public class Game {
     }
 
     public void setSudahDeclareHIJI() {
-        sudahDeclareHIJI = false;
+        sudahDeclareHIJI = true;
     }
 
     public boolean getSudahDeclareHIJI() {
