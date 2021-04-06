@@ -7,18 +7,30 @@ import java.util.*;
 //import kartu.*;
 
 public class Main {
+    // public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    
+    // Color
+    public static final String TEXT_RESET = "\u001B[0m";
+    public static final String TEXT_BLACK = "\u001B[30m";
+    public static final String TEXT_RED = "\u001B[31m";
+    public static final String TEXT_GREEN = "\u001B[32m";
+    public static final String TEXT_YELLOW = "\u001B[33m";
+    public static final String TEXT_BLUE = "\u001B[34m";
+    public static final String TEXT_PURPLE = "\u001B[35m";
+    public static final String TEXT_CYAN = "\u001B[36m";
+    public static final String TEXT_WHITE = "\u001B[37m";
+    
     public static void printLogo() {
-        System.out.println("                  .----------------.  .----------------.  .----------------.  .----------------.  ");
-        System.out.println("                  | .--------------. || .--------------. || .--------------. || .--------------. |");
-        System.out.println("                  | |  ____  ____  | || |     _____    | || |     _____    | || |     _____    | |");
-        System.out.println("                  | | |_   ||   _| | || |    |_   _|   | || |    |_   _|   | || |    |_   _|   | |");
-        System.out.println("                  | |   | |__| |   | || |      | |     | || |      | |     | || |      | |     | |");
-        System.out.println("                  | |   |  __  |   | || |      | |     | || |   _  | |     | || |      | |     | |");
-        System.out.println("                  | |  _| |  | |_  | || |     _| |_    | || |  | |_' |     | || |     _| |_    | |");
-        System.out.println("                  | | |____||____| | || |    |_____|   | || |  `.___.'     | || |    |_____|   | |");
-        System.out.println("                  | |              | || |              | || |              | || |              | |");
-        System.out.println("                  | '--------------' || '--------------' || '--------------' || '--------------' |");
-        System.out.println("                  '----------------'  '----------------'  '----------------'  '----------------' "); 
+        System.out.println(TEXT_RED + "                   .----------------.  " + TEXT_RED + TEXT_GREEN + " .----------------. " + TEXT_GREEN + TEXT_YELLOW + " .----------------. " + TEXT_YELLOW + TEXT_BLUE + " .----------------. " + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | .--------------. | " + TEXT_RED + TEXT_GREEN + "| .--------------. |" + TEXT_GREEN + TEXT_YELLOW + "| .--------------. |" + TEXT_YELLOW + TEXT_BLUE + "| .--------------. |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | |  ____  ____  | | " + TEXT_RED + TEXT_GREEN + "| |     _____    | |" + TEXT_GREEN + TEXT_YELLOW + "| |     _____    | |" + TEXT_YELLOW + TEXT_BLUE + "| |     _____    | |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | | |_   ||   _| | | " + TEXT_RED + TEXT_GREEN + "| |    |_   _|   | |" + TEXT_GREEN + TEXT_YELLOW + "| |    |_   _|   | |" + TEXT_YELLOW + TEXT_BLUE + "| |    |_   _|   | |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | |   |  __  |   | | " + TEXT_RED + TEXT_GREEN + "| |      | |     | |" + TEXT_GREEN + TEXT_YELLOW + "| |   _  | |     | |" + TEXT_YELLOW + TEXT_BLUE + "| |      | |     | |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | |  _| |  | |_  | | " + TEXT_RED + TEXT_GREEN + "| |     _| |_    | |" + TEXT_GREEN + TEXT_YELLOW + "| |  | |_' |     | |" + TEXT_YELLOW + TEXT_BLUE + "| |     _| |_    | |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | | |____||____| | | " + TEXT_RED + TEXT_GREEN + "| |    |_____|   | |" + TEXT_GREEN + TEXT_YELLOW + "| |  `.___.'     | |" + TEXT_YELLOW + TEXT_BLUE + "| |    |_____|   | |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | |              | | " + TEXT_RED + TEXT_GREEN + "| |              | |" + TEXT_GREEN + TEXT_YELLOW + "| |              | |" + TEXT_YELLOW + TEXT_BLUE + "| |              | |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  | '--------------' | " + TEXT_RED + TEXT_GREEN + "| '--------------' |" + TEXT_GREEN + TEXT_YELLOW + "| '--------------' |" + TEXT_YELLOW + TEXT_BLUE + "| '--------------' |" + TEXT_BLUE);
+        System.out.println(TEXT_RED + "                  '----------------'   " + TEXT_RED + TEXT_GREEN + "'----------------'  " + TEXT_GREEN + TEXT_YELLOW + "'----------------'  " + TEXT_YELLOW + TEXT_BLUE + " '----------------' " + TEXT_BLUE); 
         System.out.println();      
     }
 
@@ -34,7 +46,7 @@ public class Main {
         // Pesan selamat datang
         clearScreen();
         printLogo();
-        System.out.println("Selamat datang di game HIJI");
+        System.out.println(TEXT_RESET + "Selamat datang di game HIJI" + TEXT_RESET);
 
         // Input ada berapa player
         System.out.println("Silakan input banyaknya pemain!");
