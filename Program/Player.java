@@ -51,6 +51,8 @@ public class Player {
 
     public void cardList(){
         int n = 1;
+        System.out.println();
+        System.out.println("List kartu:");
         for (Card myCard : playerCardList){
             System.out.println(n + ". "+((CardMethod)myCard).toString());
             n++;
@@ -71,6 +73,7 @@ public class Player {
 
     public int printDiscardable(){
         int n = 1;
+        System.out.println();
         for (Card myCard : playerCardList){
             if(((CardMethod)myCard).isLegalMove(Deck.getDiscardPile())){
                 tmpCardList.add(myCard);
@@ -96,6 +99,7 @@ public class Player {
 
     public int printMultipleDiscardable(Card card){
         int n = 1;
+        System.out.println();
         for (Card myCard : playerCardList){
             if(((CardMethod)myCard).isEqual(card)){
                 tmpCardList.add(myCard);
@@ -119,6 +123,7 @@ public class Player {
 
     public int printDrawCard(){
         int n = 1;
+        System.out.println();
         for (Card myCard : playerCardList){
             if(myCard instanceof DrawFourCard || myCard instanceof DrawTwoCard){
                 tmpCardList.add(myCard);

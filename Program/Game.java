@@ -14,6 +14,7 @@ public class Game {
     private boolean harusDeclareHIJI = false;
     private boolean sudahDeclareHIJI = false;
     private boolean nextTurn = false;
+    private String winner = "_NO_WINNER_";
 
     /**
      * Constructor Game
@@ -207,6 +208,7 @@ public class Game {
      */
     private void pilihNextWarna(){
         if (Deck.getDiscardPile() instanceof Wildcard){
+            System.out.println();
             System.out.println("Kamu mengeluarkan wildcard, pilihan warna:");
             System.out.println("1. Merah");
             System.out.println("2. Kuning");
@@ -240,6 +242,7 @@ public class Game {
             //scanWild.close();
         }
         else if (Deck.getDiscardPile() instanceof DrawFourCard){
+            System.out.println();
             System.out.println("Kamu mengeluarkan DrawFour, pilihan warna:");
             System.out.println("1. Merah");
             System.out.println("2. Kuning");
@@ -278,6 +281,7 @@ public class Game {
      * Method untuk multiple discard
      */
     private void playerMultipleDiscard(){
+        System.out.println();
         while (getPlayerInTurn().multipleDiscardable(Deck.getDiscardPile())){
             System.out.println("Kamu bisa multiple discard, pilih 0 untuk tidak multiple discard.");
             int n = getPlayerInTurn().printMultipleDiscardable(Deck.getDiscardPile())-1;
@@ -311,6 +315,12 @@ public class Game {
         // reset declare HIJI
         setNextTurn();
         resetDeclareHIJI();
+
+        // Cek ada pemenang ngga
+        if (getPlayerInTurn().getNumOfCard()==0){
+            winner = getPlayerInTurn().getNama();
+        }
+
         // Cek kartu di discard Pile
         if (Deck.getDiscardPile() instanceof NumberCard){
             nextIdxNumberCard(1);
@@ -397,6 +407,7 @@ public class Game {
      */
     public void printPlayerList(){
         int n = 1;
+        System.out.println();
         for (Player myPlayer : playerList){
             System.out.println("Player "+n+ ": "+myPlayer.getNama());
             System.out.println("Jumlah Kartu: "+ myPlayer.getNumOfCard());
@@ -411,6 +422,7 @@ public class Game {
      * Printer player saat ini dan setelah ini
      */
     public void printPlayerInTurn(){
+        System.out.println();
         System.out.print("Saat ini giliran Player : ");
         System.out.println(getPlayerInTurn().getNama());
         System.out.print("Selanjutnya giliran Player : ");
@@ -440,10 +452,12 @@ public class Game {
         getPlayerInTurn().declareHIJI();
         setSudahDeclareHIJI();
         if (getPlayerInTurn().getNumOfCard()==1) {
+            System.out.println();
             System.out.println("Satu kartu lagi menuju kemenangan.");
             nextTurn();
             System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
         } else {
+            System.out.println();
             System.out.println("Kartu kamu masih banyak!!! Kamu otomatis draw 2 kartu.");
             getPlayerInTurn().draw(2);
         }
@@ -513,5 +527,12 @@ public class Game {
         System.out.println("Start timer");
         timer.schedule(new TimeOutHIJI(t, timer), 3*1000);
         t.start();
+    }
+
+    /**
+     * Getter nama pemenang
+     */
+    public String getWinner(){
+        return winner;
     }
 }

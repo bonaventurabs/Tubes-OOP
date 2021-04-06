@@ -110,17 +110,18 @@ public class Main {
         System.out.println("Game HIJI dimulai!");
         Game game = new Game(playerList);
         game.startGame();
-        System.out.println();
 
-        boolean noWinner = true;
-        while(noWinner){
+
+        while(game.getWinner().equals("_NO_WINNER_")){
+            
             if (game.getNextTurn()) {
+
+                promptEnterKey();
                 clearScreen();
                 printLogo();
                 game.resetNextTurn();
             }
 
-            System.out.println();
             System.out.println();
             System.out.println("Saat ini giliran: "+game.getPlayerInTurn().getNama());
             System.out.println("Kartu di discard pile: "+Deck.getDiscardPile().toString());
@@ -188,9 +189,16 @@ public class Main {
                     System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                     break;
             }
-            //scanMain.nextLine();
+            
         }
 
+        System.out.println("Selamat! HIJI dimenangkan oleh: "+game.getWinner());
+        System.out.println("Terima kasih telah bermain.");
         //scanMain.close();
+    }
+    public static void promptEnterKey(){
+        System.out.println("Tekan enter untuk pindah giliran.");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
     }
 }
