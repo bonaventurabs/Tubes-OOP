@@ -94,10 +94,11 @@ public class Main {
                 System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
                 System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
                 System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
-                System.out.println("a) Reverse Card:");
-                System.out.println("b) Skip Card: ");
-                System.out.println("c) Draw Two Card: ");
-                System.out.println("d) Draw Four Card: ");
+                System.out.println("a) Reverse Card: memutar urutan permainan");
+                System.out.println("b) Skip Card: melompati giliran player selanjutnya");
+                System.out.println("c) Wildcard: memilih warna selanjutnya");
+                System.out.println("d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                System.out.println("e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
                 System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
                 System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
             }
@@ -181,10 +182,11 @@ public class Main {
                     System.out.println("c) Apabila kartu yang baru diambil tersebut bisa dikeluarkan, pemain boleh mengeluarkan kartu tersebut (tidak wajib).");
                     System.out.println("d) Apabila kartu tersebut tidak dapat dimainkan, maka giliran diselesaikan tanpa mengeluarkan kartu.");
                     System.out.println("5) Beberapa jenis kartu memiliki power tertentu yang dapat memengaruhi jalannya permainan.");
-                    System.out.println("a) Reverse Card:");
-                    System.out.println("b) Skip Card: ");
-                    System.out.println("c) Draw Two Card: ");
-                    System.out.println("d) Draw Four Card: ");
+                    System.out.println("a) Reverse Card: memutar urutan permainan");
+                    System.out.println("b) Skip Card: melompati giliran player selanjutnya");
+                    System.out.println("c) Wildcard: memilih warna selanjutnya");
+                    System.out.println("d) Draw Two Card: player selanjutnya wajib mengambil 2 kartu jika tidak membalas");
+                    System.out.println("e) Draw Four Card: memilih warna selanjutnya dan player selanjutnya wajib mengambil 4 kartu");
                     System.out.println("6) Apabila pemain memiliki sisa satu kartu, maka pemain harus melakukan \"Declare HIJI\" dalam waktu 3 detik. Apabila tidak, pemain wajib mengambil dua kartu dari deck.");
                     System.out.println("7) Pemain dinyatakan menang apabila kartu yang dipegangnya sudah habis, dan permainan selesai.");
                     break;
