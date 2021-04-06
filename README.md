@@ -6,3 +6,5 @@ Tugas besar mata kuliah Pemrograman Berorientasi Objek STI
 $ javac Main.java
 $ java Main
 ```
+
+![oop](/img/oop.jpg)

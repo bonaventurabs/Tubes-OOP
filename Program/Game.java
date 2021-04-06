@@ -518,6 +518,7 @@ public class Game {
             } catch (InterruptedException e) {
                 // log error
                 if (!getSudahDeclareHIJI()) {
+                    System.out.println();
                     System.out.println("Waktu kamu untuk declare HIJI habis!!! Kamu otomatis draw 2 kartu.");
                     getPlayerInTurn().draw(2);
                     nextTurn();
