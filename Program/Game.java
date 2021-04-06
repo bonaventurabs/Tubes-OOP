@@ -147,6 +147,7 @@ public class Game {
                 } else {
                     // Next turn
                     nextTurn();
+                    System.out.println("Giliran kamu selesai, giliran selanjutnya: "+getPlayerInTurn().getNama());
                 }
             }
             else {
